@@ -70,14 +70,17 @@ describe('certificate discovery', () => {
     renderApp('/sertifikasi')
 
     const search = await screen.findByRole('searchbox', { name: 'Cari judul, penerbit, atau kompetensi' })
-    await user.type(search, 'Finalis CTF ARA 7.0')
+    await user.type(search, 'Steven Capture The Flag')
 
-    expect(screen.getByRole('heading', { level: 2, name: 'Finalis CTF ARA 7.0' })).toBeInTheDocument()
-    expect(screen.getByText('Menampilkan 1 dari 16 sertifikat.')).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Top 18 Nasional - Steven Capture The Flag (SCTF) 2026' }),
+    ).toBeInTheDocument()
+    expect(screen.getByText('DCSC/SCTF/2026/155')).toBeInTheDocument()
+    expect(screen.getByText('Menampilkan 1 dari 20 sertifikat.')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Reset' }))
     expect(search).toHaveValue('')
-    expect(screen.getByText('Menampilkan 16 dari 16 sertifikat.')).toBeInTheDocument()
+    expect(screen.getByText('Menampilkan 20 dari 20 sertifikat.')).toBeInTheDocument()
   })
 
   it('filters certificates by year and supports an empty state', async () => {
@@ -85,7 +88,7 @@ describe('certificate discovery', () => {
     renderApp('/sertifikasi')
 
     await user.selectOptions(await screen.findByRole('combobox', { name: 'Tahun' }), '2026')
-    expect(screen.getByText('Menampilkan 1 dari 16 sertifikat.')).toBeInTheDocument()
+    expect(screen.getByText('Menampilkan 5 dari 20 sertifikat.')).toBeInTheDocument()
 
     await user.type(screen.getByRole('searchbox', { name: 'Cari judul, penerbit, atau kompetensi' }), 'tidak mungkin ditemukan')
     expect(screen.getByRole('heading', { level: 2, name: 'Sertifikat tidak ditemukan' })).toBeInTheDocument()

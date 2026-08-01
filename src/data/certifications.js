@@ -14,6 +14,10 @@ import cert13 from '../assets/Screenshot 2026-03-10 082116.webp'
 import cert14 from '../assets/Screenshot 2026-03-10 082136.webp'
 import cert15 from '../assets/Screenshot 2026-03-10 082144.webp'
 import cert16 from '../assets/Screenshot 2026-03-10 082153.webp'
+import cert17 from '../assets/cert-sctf-top-18-2026.webp'
+import cert18 from '../assets/cert-cyber-breaker-development-regional-2026.webp'
+import cert19 from '../assets/cert-zero-day-scholar-battle-2026.webp'
+import cert20 from '../assets/cert-zero-day-mini-games-2026.webp'
 import cert01Small from '../assets/certifications/cert-01-480.webp'
 import cert02Small from '../assets/certifications/cert-02-480.webp'
 import cert03Small from '../assets/certifications/cert-03-480.webp'
@@ -30,6 +34,10 @@ import cert13Small from '../assets/certifications/cert-13-480.webp'
 import cert14Small from '../assets/certifications/cert-14-480.webp'
 import cert15Small from '../assets/certifications/cert-15-480.webp'
 import cert16Small from '../assets/certifications/cert-16-480.webp'
+import cert17Small from '../assets/certifications/cert-17-480.webp'
+import cert18Small from '../assets/certifications/cert-18-480.webp'
+import cert19Small from '../assets/certifications/cert-19-480.webp'
+import cert20Small from '../assets/certifications/cert-20-480.webp'
 import cert01Medium from '../assets/certifications/cert-01-640.webp'
 import cert02Medium from '../assets/certifications/cert-02-640.webp'
 import cert03Medium from '../assets/certifications/cert-03-640.webp'
@@ -46,8 +54,76 @@ import cert13Medium from '../assets/certifications/cert-13-640.webp'
 import cert14Medium from '../assets/certifications/cert-14-640.webp'
 import cert15Medium from '../assets/certifications/cert-15-640.webp'
 import cert16Medium from '../assets/certifications/cert-16-640.webp'
+import cert17Medium from '../assets/certifications/cert-17-640.webp'
+import cert18Medium from '../assets/certifications/cert-18-640.webp'
+import cert19Medium from '../assets/certifications/cert-19-640.webp'
+import cert20Medium from '../assets/certifications/cert-20-640.webp'
 
 export const certifications = [
+  {
+    id: 'cert-19',
+    image: cert19,
+    imageSmall: cert19Small,
+    imageMedium: cert19Medium,
+    imageWidth: 800,
+    imageHeight: 567,
+    title: 'Top 10 Honorable Mention - Zero Day 2026 Scholar Battle',
+    issuer: 'PT Digital Solusi Grup (DSG)',
+    issueDate: '7 Juli 2026',
+    year: 2026,
+    credentialId: '-',
+    skills: ['CTF', 'Cybersecurity', 'Kompetisi Keamanan Siber'],
+    description:
+      'Sertifikat partisipasi aktif sekaligus pencapaian Top 10 Honorable Mention pada klaster Scholar Battle dalam kompetisi CTF Zero Day 2026.',
+  },
+  {
+    id: 'cert-17',
+    image: cert17,
+    imageSmall: cert17Small,
+    imageMedium: cert17Medium,
+    imageWidth: 804,
+    imageHeight: 569,
+    title: 'Top 18 Nasional - Steven Capture The Flag (SCTF) 2026',
+    issuer: 'Darmajaya Cyber Security Club (DCSC)',
+    issueDate: '3 Juli 2026',
+    year: 2026,
+    credentialId: 'DCSC/SCTF/2026/155',
+    skills: ['CTF', 'Cybersecurity', 'Kompetisi Keamanan Siber'],
+    description:
+      'Sertifikat pencapaian Top 18 tingkat nasional pada Steven Capture The Flag (SCTF) 2026 sebagai anggota tim SCS - lagi magang, yang diselenggarakan di Kampus IIB Darmajaya, Bandar Lampung.',
+  },
+  {
+    id: 'cert-20',
+    image: cert20,
+    imageSmall: cert20Small,
+    imageMedium: cert20Medium,
+    imageWidth: 977,
+    imageHeight: 698,
+    title: 'Mini Games Participation - Zero Day 2026',
+    issuer: 'PT Digital Solusi Grup (DSG)',
+    issueDate: '28 Juni 2026',
+    year: 2026,
+    credentialId: '-',
+    skills: ['Cybersecurity', 'Keterlibatan Komunitas', 'Aktivitas Kompetitif'],
+    description:
+      'Sertifikat partisipasi aktif dalam Mini Games pada rangkaian Capture The Flag Zero Day 2026.',
+  },
+  {
+    id: 'cert-18',
+    image: cert18,
+    imageSmall: cert18Small,
+    imageMedium: cert18Medium,
+    imageWidth: 804,
+    imageHeight: 569,
+    title: 'Cyber Breaker Development Regional 2026',
+    issuer: 'Cyber Breaker',
+    issueDate: '2-3 Mei 2026',
+    year: 2026,
+    credentialId: '273/EXT/CBD-REGIONAL/PRS/VIII/2026',
+    skills: ['Cybersecurity', 'Pengembangan Kompetensi', 'Kolaborasi Tim'],
+    description:
+      'Sertifikat keikutsertaan dalam Cyber Breaker Development Regional sebagai ShinEunSooNgeahack dari tim SCS - KokoMelon.',
+  },
   {
     id: 'cert-01',
     image: cert01,

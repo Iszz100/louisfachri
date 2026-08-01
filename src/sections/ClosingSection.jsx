@@ -1,5 +1,5 @@
 ﻿import { motion } from 'framer-motion'
-import { FaEnvelope, FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6'
+import { FaEnvelope, FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
 import { sectionReveal } from '../utils/motion'
 
 export default function ClosingSection() {
@@ -33,13 +33,13 @@ export default function ClosingSection() {
               <FaEnvelope size={18} />
             </a>
             <a
-              href="https://wa.me/628982688708"
+              href="https://www.instagram.com/luisfahrikah?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
               rel="noreferrer"
               className="focus-ring flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/45 bg-cyan-400/85 text-slate-950 shadow-[0_4px_14px_rgba(34,211,238,0.30)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(34,211,238,0.40)]"
-              aria-label="WhatsApp"
+              aria-label="Instagram"
             >
-              <FaWhatsapp size={19} />
+              <FaInstagram size={19} />
             </a>
             <a
               href="https://github.com/Iszz100"
@@ -72,4 +72,3 @@ export default function ClosingSection() {
     </section>
   )
 }
-

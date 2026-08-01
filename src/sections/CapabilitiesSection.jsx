@@ -5,14 +5,14 @@ import useResponsiveMotion from '../hooks/useResponsiveMotion'
 import { cardInteraction, sectionReveal, staggerContainer } from '../utils/motion'
 
 export default function CapabilitiesSection() {
-  const { isMobile } = useResponsiveMotion()
+  const { isMobile, reduceMotion } = useResponsiveMotion()
 
   return (
     <section className="section-padding">
       <div className="container-shell">
         <motion.div
           variants={sectionReveal}
-          initial="hidden"
+          initial={reduceMotion ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
@@ -25,7 +25,7 @@ export default function CapabilitiesSection() {
 
         <motion.div
           variants={staggerContainer}
-          initial="hidden"
+          initial={reduceMotion ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           className="grid gap-5 md:grid-cols-2"

@@ -32,8 +32,8 @@ export default function HeroSection() {
   const headingMotion = shouldReduceAllMotion
     ? {}
     : {
-        initial: { opacity: 0, y: headingDistance },
-        animate: { opacity: 1, y: 0 },
+        initial: { y: headingDistance },
+        animate: { y: 0 },
         transition: { duration: 0.8, ease: cinematicEase, delay: 0.2 },
       }
 
@@ -269,14 +269,15 @@ export default function HeroSection() {
               </motion.a>
               <motion.a
                 href={cvFile}
-                download="CV-Louis-Fachri-Putra-Jatmiko-Terbaru.pdf"
+                download="CV-Louis-Fachri-Putra-Jatmiko.pdf"
                 type="application/pdf"
+                aria-label="Download CV (PDF) Louis Fachri"
                 className="btn-premium hero-cta-btn border-blue-300/50 bg-blue-400/10 text-blue-100"
                 variants={buttonItem}
                 whileHover={shouldReduceAllMotion ? undefined : { y: -3, scale: 1.01 }}
                 whileTap={shouldReduceAllMotion ? undefined : { scale: 0.985 }}
               >
-                Download CV
+                Download CV (PDF)
               </motion.a>
             </motion.div>
           </div>

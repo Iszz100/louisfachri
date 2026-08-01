@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function DeferredSection({ loader, id, className = '', rootMargin = '280px 0px' }) {
+export default function DeferredSection({ loader, id, className = '', rootMargin = '280px 0px', forceLoad = false }) {
   const sectionRef = useRef(null)
   const [SectionComponent, setSectionComponent] = useState(null)
 
@@ -11,6 +11,13 @@ export default function DeferredSection({ loader, id, className = '', rootMargin
       const module = await loader()
       if (mounted) {
         setSectionComponent(() => module.default)
+      }
+    }
+
+    if (forceLoad) {
+      void loadSection()
+      return () => {
+        mounted = false
       }
     }
 
@@ -39,10 +46,16 @@ export default function DeferredSection({ loader, id, className = '', rootMargin
       mounted = false
       observer.disconnect()
     }
-  }, [loader, rootMargin])
+  }, [forceLoad, loader, rootMargin])
 
   return (
-    <div id={id} ref={sectionRef} className={className}>
+    <div
+      id={id}
+      ref={sectionRef}
+      className={className}
+      data-deferred-section
+      data-loaded={SectionComponent ? 'true' : 'false'}
+    >
       {SectionComponent ? <SectionComponent /> : null}
     </div>
   )

@@ -15,7 +15,7 @@ function ProjectGallery({ images, title }) {
       <div className="h-56 overflow-hidden rounded-lg border border-slate-700/60 bg-slate-950/90 p-2 md:h-72">
         <img
           src={activeImage}
-          alt={`${title} preview utama`}
+          alt={`Tampilan utama proyek ${title}`}
           loading="lazy"
           decoding="async"
           fetchPriority="low"
@@ -23,7 +23,7 @@ function ProjectGallery({ images, title }) {
         />
       </div>
 
-      <div className="mt-2 grid grid-cols-4 gap-2">
+      <div className="mt-2 grid grid-cols-4 gap-2" role="group" aria-label={`Pilih gambar untuk ${title}`}>
         {images.map((imageSrc, index) => (
           <button
             key={`${title}-thumb-${index + 1}`}
@@ -34,10 +34,12 @@ function ProjectGallery({ images, title }) {
               activeIndex === index ? 'border-cyan-300/70' : 'border-slate-700/70 hover:border-slate-500',
             )}
             aria-label={`Lihat screenshot ${index + 1}`}
+            aria-pressed={activeIndex === index}
           >
             <img
               src={imageSrc}
-              alt={`${title} thumbnail ${index + 1}`}
+              alt=""
+              aria-hidden="true"
               loading="lazy"
               decoding="async"
               fetchPriority="low"
@@ -52,19 +54,28 @@ function ProjectGallery({ images, title }) {
 
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState('Semua')
-  const { isMobile } = useResponsiveMotion()
+  const { isMobile, reduceMotion } = useResponsiveMotion()
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === 'Semua') return projects
     return projects.filter((project) => project.category === activeCategory)
   }, [activeCategory])
 
+  const hasSafeExternalUrl = (value) => {
+    if (!value) return false
+    try {
+      return new URL(value).protocol === 'https:'
+    } catch {
+      return false
+    }
+  }
+
   return (
     <section className="section-padding">
       <div className="container-shell">
         <motion.div
           variants={sectionReveal}
-          initial="hidden"
+          initial={reduceMotion ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
@@ -81,8 +92,9 @@ export default function ProjectsSection() {
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
+              aria-pressed={activeCategory === category}
               className={cn(
-                'focus-ring rounded-full border px-4 py-2 text-xs font-medium transition',
+                'focus-ring min-h-11 rounded-full border px-4 py-2 text-xs font-medium transition',
                 activeCategory === category
                   ? 'border-cyan-300/60 bg-cyan-400/15 text-cyan-100'
                   : 'border-slate-700 bg-slate-900/70 text-slate-300 hover:border-slate-500',
@@ -93,10 +105,14 @@ export default function ProjectsSection() {
           ))}
         </div>
 
+        <p className="mb-5 text-sm text-slate-400" aria-live="polite" aria-atomic="true">
+          Menampilkan {filteredProjects.length} proyek pada kategori {activeCategory}.
+        </p>
+
         <motion.div
           key={activeCategory}
           variants={staggerContainer}
-          initial="hidden"
+          initial={reduceMotion ? false : 'hidden'}
           animate="show"
           className="grid gap-6 lg:grid-cols-2"
         >
@@ -144,8 +160,8 @@ export default function ProjectsSection() {
                         <span className="text-slate-100">Yang Saya Pelajari:</span> {project.impact}
                       </p>
                       <div className="rounded-xl border border-cyan-300/25 bg-cyan-400/8 px-3 py-2 text-cyan-100">
-                        <span className="text-[11px] uppercase tracking-[0.17em] text-cyan-300">Ringkasan Hasil Belajar</span>
-                        <p className="mt-1 text-sm">{project.impactMetric}</p>
+                        <span className="text-[11px] uppercase tracking-[0.17em] text-cyan-300">Output Terdokumentasi</span>
+                        <p className="mt-1 text-sm">{project.documentedOutput}</p>
                       </div>
                       <p>
                         <span className="text-slate-100">Peran:</span> {project.role}
@@ -181,15 +197,16 @@ export default function ProjectsSection() {
                       ))}
                     </div>
 
-                    {project.repositoryUrl ? (
+                    {hasSafeExternalUrl(project.repositoryUrl) ? (
                       <div className="mt-4">
                         <a
                           href={project.repositoryUrl}
                           target="_blank"
-                          rel="noreferrer"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.repositoryLabel ?? 'Lihat Repository'}: ${project.title}`}
                           className="focus-ring inline-flex rounded-lg border border-cyan-300/45 bg-cyan-400/10 px-3 py-2 text-sm text-cyan-200 transition hover:-translate-y-[1px] hover:border-cyan-300/70"
                         >
-                          Lihat Repository GitHub
+                          {project.repositoryLabel ?? 'Lihat Repository'}
                         </a>
                       </div>
                     ) : null}
@@ -202,10 +219,9 @@ export default function ProjectsSection() {
               variants={sectionReveal}
               className="glass-panel rounded-2xl border border-dashed border-cyan-300/35 bg-slate-900/50 p-6 text-slate-200 lg:col-span-2"
             >
-              <h3 className="text-lg font-semibold text-slate-100">Kategori Lainnya siap dipakai</h3>
+              <h3 className="text-lg font-semibold text-slate-100">Belum ada proyek pada kategori ini</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-300">
-                Belum ada proyek di kategori ini. Nanti kalau kamu punya proyek baru di luar System Administrator dan
-                Cybersecurity, tinggal tambahkan ke data project dengan category <span className="text-cyan-200">Lainnya</span>.
+                Silakan pilih kategori lain untuk melihat proyek yang tersedia.
               </p>
             </motion.article>
           )}

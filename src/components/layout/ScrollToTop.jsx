@@ -1,16 +1,43 @@
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { useLocation } from 'react-router'
 
 export default function ScrollToTop() {
-  const { pathname, hash } = useLocation()
+  const { pathname, hash, key } = useLocation()
+  const previousLocationRef = useRef(`${key}:${pathname}${hash}`)
 
   useEffect(() => {
+    const currentLocation = `${key}:${pathname}${hash}`
+    const shouldMoveFocus = previousLocationRef.current !== currentLocation
+    previousLocationRef.current = currentLocation
+
     if (hash) {
-      const targetId = decodeURIComponent(hash.replace('#', ''))
+      let targetId
+      try {
+        targetId = decodeURIComponent(hash.replace('#', ''))
+      } catch {
+        return undefined
+      }
+
       const scrollToHashTarget = () => {
         const target = document.getElementById(targetId)
         if (!target) return false
+
+        const pendingSections = [...document.querySelectorAll('[data-deferred-section][data-loaded="false"]')]
+          .some((section) => {
+            if (section === target) return true
+            return Boolean(section.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_FOLLOWING)
+          })
+
+        if (pendingSections) return false
+
         target.scrollIntoView({ behavior: 'auto', block: 'start' })
+
+        if (shouldMoveFocus) {
+          const heading = target.querySelector('h1, h2, h3') ?? target
+          heading.setAttribute('tabindex', '-1')
+          heading.focus({ preventScroll: true })
+        }
+
         return true
       }
 
@@ -29,7 +56,11 @@ export default function ScrollToTop() {
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [pathname, hash])
+
+    if (shouldMoveFocus) {
+      window.requestAnimationFrame(() => document.getElementById('main-content')?.focus({ preventScroll: true }))
+    }
+  }, [pathname, hash, key])
 
   return null
 }

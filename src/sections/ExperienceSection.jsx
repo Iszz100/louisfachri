@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import SectionHeading from '../components/common/SectionHeading'
-import { timeline } from '../data/experience'
+import { roadmap, timeline } from '../data/experience'
 import useResponsiveMotion from '../hooks/useResponsiveMotion'
 import { sectionReveal, staggerContainer } from '../utils/motion'
 
@@ -19,12 +19,12 @@ export default function ExperienceSection() {
       <div className="container-shell">
         <motion.div
           variants={sectionReveal}
-          initial="hidden"
+          initial={reduceMotion ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
           <SectionHeading
-            eyebrow="Pengalaman & Pencapaian"
+            eyebrow="Perjalanan Belajar"
             title="Timeline belajar saya selama menempuh SMK SIJA."
             description="Perjalanan ini saya jalani bertahap dari dasar IT, fokus Linux dan administrasi server, sampai target kesiapan kerja setelah lulus."
           />
@@ -33,7 +33,7 @@ export default function ExperienceSection() {
         <motion.div
           ref={trackRef}
           variants={staggerContainer}
-          initial="hidden"
+          initial={reduceMotion ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           className="relative space-y-5"
@@ -55,6 +55,24 @@ export default function ExperienceSection() {
               <h3 className="mt-2 text-lg font-semibold text-slate-100">{item.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-300">{item.description}</p>
             </motion.article>
+          ))}
+        </motion.div>
+
+        <motion.div
+          variants={sectionReveal}
+          initial={reduceMotion ? false : 'hidden'}
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="mt-12 rounded-2xl border border-purple-300/25 bg-purple-400/5 p-6 md:p-8"
+        >
+          <p className="text-xs uppercase tracking-[0.2em] text-purple-200">Roadmap</p>
+          <h2 className="mt-3 text-2xl font-semibold text-slate-100">Target pengembangan berikutnya</h2>
+          {roadmap.map((item) => (
+            <article key={item.year} className="mt-5 border-l-2 border-purple-300/50 pl-4">
+              <p className="text-xs font-medium uppercase tracking-[0.18em] text-purple-200">Target {item.year}</p>
+              <h3 className="mt-2 text-lg font-semibold text-slate-100">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.description}</p>
+            </article>
           ))}
         </motion.div>
       </div>

@@ -1,0 +1,19 @@
+{
+  "name": "Portfolio Louis Fachri",
+  "short_name": "Louis Fachri",
+  "description": "Portfolio Junior System Administrator dan Cybersecurity Enthusiast.",
+  "lang": "id",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/louis-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

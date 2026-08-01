@@ -23,10 +23,27 @@ export const timeline = [
     description:
       'Masuk fase persiapan PKL dengan fokus latihan keamanan sistem dasar, hardening sederhana, dan challenge CTF untuk melatih analisis.',
   },
+]
+
+export const roadmap = [
   {
     year: '2027',
-    title: 'Target Pendalaman Skill dan Kesiapan Kerja',
+    title: 'Pendalaman Skill dan Kesiapan Kerja',
     description:
       'Menargetkan pendalaman skill system administrator dan cybersecurity dasar agar lebih siap masuk dunia kerja setelah lulus.',
+  },
+]
+
+export const education = [
+  {
+    institution: 'SMK Telkom Sidoarjo',
+    major: 'Sistem Informasi, Jaringan dan Aplikasi (SIJA)',
+    degree: 'Sekolah Menengah Kejuruan',
+    startYear: '2023',
+    endYear: 'Sekarang',
+    status: 'Siswa aktif',
+    location: 'Sidoarjo, Jawa Timur',
+    description:
+      'Mempelajari fondasi administrasi sistem, jaringan, aplikasi, dan praktik teknologi melalui pembelajaran serta proyek sekolah.',
   },
 ]

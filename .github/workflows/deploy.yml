@@ -37,7 +37,7 @@ jobs:
         run: npm ci
 
       - name: Build with base path
-        run: npx vite build --base=/portofolioLouisAsli/ && node scripts/generate-route-html.mjs
+        run: npx vite build --base=/louisfachri/ && node scripts/generate-route-html.mjs
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

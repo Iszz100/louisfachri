@@ -1,18 +1,41 @@
 export const domains = [
   {
-    id: 'system-administration',
-    title: 'System Administrator',
-    coreStrengths: ['Linux', 'SSH', 'Nginx', 'Service Setup', 'User Management', 'Troubleshooting'],
+    id: 'security-monitoring',
+    number: '01',
+    title: 'Security Monitoring',
     context:
-      'Fokus latihan saya ada di administrasi Linux sehari-hari, mulai dari setup service, manajemen user, sampai penanganan error saat service bermasalah.',
-    stack: ['Linux', 'SSH', 'Nginx', 'Systemd', 'Journalctl'],
+      'Saya menggunakan Wazuh untuk memantau alert dan event keamanan, lalu membaca log untuk memahami konteks kejadian di lingkungan lab.',
+    coreStrengths: [
+      'Meninjau alert dan event pada lingkungan lab',
+      'Membaca log untuk menemukan konteks kejadian',
+      'Mendokumentasikan temuan dan alur analisis',
+    ],
+    stack: ['Wazuh', 'SIEM', 'Log Analysis', 'Security Events'],
   },
   {
-    id: 'cybersecurity',
-    title: 'Cybersecurity',
-    coreStrengths: ['CTF practice', 'CTF Cryptography', 'Digital Forensics'],
+    id: 'network-security',
+    number: '02',
+    title: 'Network Security',
     context:
-      'Fokus cybersecurity saya sekarang khusus di CTF, terutama role Cryptography dan Digital Forensics. Saya latihan bertahap untuk meningkatkan analisis pola, decoding, dan investigasi artefak digital.',
-    stack: ['CTF Platform', 'Cryptography Challenges', 'Digital Forensics Challenges', 'TryHackMe / HackTheBox'],
+      'Saya mempelajari kontrol trafik, firewall, dan IDS/IPS melalui praktik lab jaringan menggunakan OPNsense dan Suricata.',
+    coreStrengths: [
+      'Menguji rule firewall dan alur trafik jaringan',
+      'Mempelajari deteksi melalui IDS/IPS',
+      'Melakukan troubleshooting konektivitas dan konfigurasi',
+    ],
+    stack: ['OPNsense', 'Suricata', 'Firewall', 'IDS/IPS'],
+  },
+  {
+    id: 'system-administration',
+    number: '03',
+    title: 'System Administration',
+    context:
+      'Saya berlatih menyiapkan layanan Linux, menjalankan container Docker, dan menelusuri gangguan melalui log serta status sistem.',
+    coreStrengths: [
+      'Menyiapkan service dan environment Linux',
+      'Menjalankan workload berbasis container',
+      'Troubleshooting service melalui log dan status sistem',
+    ],
+    stack: ['Linux', 'Docker', 'Systemd', 'Networking'],
   },
 ]

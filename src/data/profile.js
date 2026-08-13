@@ -1,17 +1,32 @@
 export const profile = {
   name: 'Louis Fachri Putra Jatmiko',
-  roles: ['Junior System Administrator \u2022 Cybersecurity Enthusiast'],
+  role: 'System Administrator & Cybersecurity',
+  status: 'Cybersecurity Intern / SMK SIJA',
   manifesto:
-    'Saya belajar dengan cara eksplor Linux langsung di lab pribadi, lalu coba konfigurasi service satu per satu sampai paham alurnya. Kalau ada error, saya biasakan baca log dan troubleshooting pelan-pelan sampai ketemu akar masalahnya. Di waktu latihan keamanan, saya juga mengerjakan challenge CTF dasar untuk melatih analisis dan ketelitian.',
+    'Saya belajar lewat praktik langsung: menyiapkan lab, membaca log, menguji konfigurasi, dan melakukan troubleshooting ketika menemukan masalah.',
   shortPitch:
-    'Saya Louis Fachri Putra Jatmiko, siswa SMK jurusan SIJA angkatan 2023 yang fokus di System Administrator dan Cybersecurity. Saya terbiasa belajar lewat praktik server Linux, monitoring, troubleshooting, dan latihan keamanan dasar secara bertahap.',
+    'Saya siswa SIJA yang fokus belajar System Administration dan Cybersecurity. Saat ini saya menjalani PKL di bidang Cybersecurity / Blue Team dengan praktik menggunakan Wazuh, OPNsense, Linux, serta melakukan monitoring dan troubleshooting jaringan.',
   location: 'Sidoarjo, Jawa Timur',
+  currentFocus: ['Wazuh', 'OPNsense', 'Linux', 'Docker', 'Networking'],
+  card: {
+    handle: 'LOUIS.FACHRI',
+    status: 'Learning & Building',
+    focus: 'Blue Team / System Administration',
+    location: 'Sidoarjo, Indonesia',
+    currently: 'Cybersecurity Internship',
+  },
+  links: {
+    github: 'https://github.com/Iszz100',
+    linkedin: 'https://www.linkedin.com/in/louis-fachri-putra-jatmiko-878889291/',
+    instagram: 'https://www.instagram.com/luisfahrikah/',
+    email: 'mailto:louisfpj@gmail.com',
+  },
 }
 
 export const navLinks = [
-  { id: 'hero', label: 'Beranda' },
-  { id: 'capabilities', label: 'Kapabilitas' },
+  { id: 'featured-project', label: 'Proyek Pilihan' },
+  { id: 'capabilities', label: 'Fokus Teknis' },
+  { id: 'experience', label: 'PKL' },
   { id: 'projects', label: 'Proyek' },
-  { id: 'experience', label: 'Perjalanan' },
   { id: 'contact', label: 'Kontak' },
 ]

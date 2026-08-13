@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 const SITE_URL = 'https://louisfachri.my.id'
 const SOCIAL_IMAGE = `${SITE_URL}/social-preview.png`
-const SOCIAL_IMAGE_ALT = 'Louis Fachri — Junior System Administrator dan Cybersecurity Enthusiast'
+const SOCIAL_IMAGE_ALT = 'Portfolio Louis Fachri — System Administrator dan Cybersecurity'
 
 function upsertMeta(attribute, key, content) {
   let element = [...document.head.querySelectorAll('meta')].find((meta) => meta.getAttribute(attribute) === key)

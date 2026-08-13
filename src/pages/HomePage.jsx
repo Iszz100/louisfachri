@@ -3,31 +3,34 @@ import PageMeta from '../components/common/PageMeta'
 import HeroSection from '../sections/HeroSection'
 import { useLocation } from 'react-router'
 
-const loadManifestoSection = () => import('../sections/ManifestoSection')
+const loadFeaturedProjectSection = () => import('../sections/FeaturedProjectSection')
 const loadCapabilitiesSection = () => import('../sections/CapabilitiesSection')
-const loadProjectsSection = () => import('../sections/ProjectsSection')
 const loadExperienceSection = () => import('../sections/ExperienceSection')
+const loadProjectsSection = () => import('../sections/ProjectsSection')
 const loadEducationSection = () => import('../sections/EducationSection')
+const loadCertificationsPreviewSection = () => import('../sections/CertificationsPreviewSection')
 const loadClosingSection = () => import('../sections/ClosingSection')
 
 const deferredSections = [
-  { id: 'manifesto', loader: loadManifestoSection, className: 'content-auto-section min-h-[280px]' },
-  { id: 'capabilities', loader: loadCapabilitiesSection, className: 'content-auto-section min-h-[340px]' },
-  { id: 'projects', loader: loadProjectsSection, className: 'content-auto-section min-h-[540px]' },
-  { id: 'experience', loader: loadExperienceSection, className: 'content-auto-section min-h-[360px]' },
+  { id: 'featured-project', loader: loadFeaturedProjectSection, className: 'content-auto-section min-h-[620px]' },
+  { id: 'capabilities', loader: loadCapabilitiesSection, className: 'content-auto-section min-h-[640px]' },
+  { id: 'experience', loader: loadExperienceSection, className: 'content-auto-section min-h-[880px]' },
+  { id: 'projects', loader: loadProjectsSection, className: 'content-auto-section min-h-[900px]' },
   { id: 'education', loader: loadEducationSection, className: 'content-auto-section min-h-[300px]' },
+  { id: 'certifications', loader: loadCertificationsPreviewSection, className: 'content-auto-section min-h-[520px]' },
   { id: 'contact', loader: loadClosingSection, className: 'content-auto-section min-h-[340px]' },
 ]
 
-const title = 'Louis Fachri | System Administrator & Cybersecurity Enthusiast'
+const title = 'Louis Fachri — System Administrator & Cybersecurity Portfolio'
 const description =
-  'Portfolio Louis Fachri, Junior System Administrator dan Cybersecurity Enthusiast dengan pengalaman di bidang Linux, networking, cybersecurity, Docker, Python, dan web development.'
+  'Portfolio Louis Fachri Putra Jatmiko, siswa SMK SIJA dan intern cybersecurity yang berlatih dengan Wazuh, OPNsense, Linux, Docker, networking, SIEM, serta IDS/IPS.'
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Louis Fachri Putra Jatmiko',
   url: 'https://louisfachri.my.id/',
-  jobTitle: 'Junior System Administrator',
+  jobTitle: 'Cybersecurity Intern and SMK SIJA Student',
+  knowsAbout: ['System Administration', 'Cybersecurity', 'Wazuh', 'OPNsense', 'Linux', 'Docker', 'Networking'],
   sameAs: [
     'https://github.com/Iszz100',
     'https://www.linkedin.com/in/louis-fachri-putra-jatmiko-878889291/',
@@ -45,7 +48,8 @@ export default function HomePage() {
     hashTarget = ''
   }
 
-  const targetIndex = deferredSections.findIndex((section) => section.id === hashTarget)
+  const deferredTarget = hashTarget.startsWith('project-') ? 'projects' : hashTarget
+  const targetIndex = deferredSections.findIndex((section) => section.id === deferredTarget)
 
   return (
     <>

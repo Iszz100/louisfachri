@@ -19,7 +19,7 @@ describe('routing and page metadata', () => {
     renderApp()
 
     expect(await screen.findByRole('heading', { level: 1, name: /Louis Fachri Putra Jatmiko/i })).toBeInTheDocument()
-    await waitFor(() => expect(document.title).toBe('Louis Fachri | System Administrator & Cybersecurity Enthusiast'))
+    await waitFor(() => expect(document.title).toBe('Louis Fachri — System Administrator & Cybersecurity Portfolio'))
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', 'https://louisfachri.my.id/')
   })
 
@@ -43,6 +43,18 @@ describe('routing and page metadata', () => {
 
     expect(await screen.findByRole('heading', { level: 1, name: 'Dokumentasi Sertifikat dan Pencapaian' })).toBeInTheDocument()
     await waitFor(() => expect(document.title).toBe('Sertifikasi | Louis Fachri'))
+  })
+
+  it('loads the project archive for a direct featured-project detail anchor', async () => {
+    renderApp('/#project-p-2')
+
+    await waitFor(() => expect(document.getElementById('project-p-2')).toBeInTheDocument())
+  })
+
+  it('reveals a project outside the default showcase for a direct detail anchor', async () => {
+    renderApp('/#project-p-4')
+
+    await waitFor(() => expect(document.getElementById('project-p-4')).toBeInTheDocument())
   })
 
   it('renders a noindex 404 page for an unknown route', async () => {
@@ -111,6 +123,67 @@ describe('project links', () => {
       name: `Lihat Repository Tim: School Website Redesign (JHIC) - System Administrator Operations`,
     })).toHaveAttribute('href', 'https://github.com/Iszz100/unauthorized_no_backend')
     expect(document.querySelector('a[href="https://github.com/Unauthorized-new-site"]')).not.toBeInTheDocument()
+  })
+})
+
+describe('project showcase', () => {
+  it('shows four projects by default and can expand or collapse the full list', async () => {
+    const user = userEvent.setup()
+    render(
+      <MemoryRouter>
+        <ProjectsSection />
+      </MemoryRouter>,
+    )
+
+    expect(screen.getAllByRole('article')).toHaveLength(4)
+    expect(screen.getByText('4 dari 5 proyek ditampilkan')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Lihat Semua Project' }))
+    expect(screen.getAllByRole('article')).toHaveLength(5)
+    expect(screen.getByText('5 proyek ditampilkan')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Tampilkan Lebih Sedikit' }))
+    expect(screen.getAllByRole('article')).toHaveLength(4)
+  })
+
+  it('shows every matching project when a specific filter is selected', async () => {
+    const user = userEvent.setup()
+    render(
+      <MemoryRouter>
+        <ProjectsSection />
+      </MemoryRouter>,
+    )
+
+    await user.click(screen.getByRole('button', { name: 'System Administrator' }))
+
+    expect(screen.getAllByRole('article')).toHaveLength(3)
+    expect(screen.getByText('3 proyek ditampilkan')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Lihat Semua Project' })).not.toBeInTheDocument()
+  })
+
+  it('keeps the screenshot gallery available inside project details', async () => {
+    const user = userEvent.setup()
+    render(
+      <MemoryRouter>
+        <ProjectsSection />
+      </MemoryRouter>,
+    )
+
+    const projectHeading = screen.getByRole('heading', {
+      name: 'Website Chatbot UKS & Perpustakaan (Flask) - Deployment & Operasional Service',
+    })
+    const projectCard = projectHeading.closest('article')
+    await user.click(within(projectCard).getByText('Lihat Detail Proyek'))
+
+    const secondScreenshot = within(projectCard).getByRole('button', { name: 'Tampilkan screenshot 2 dari 4' })
+    await user.click(secondScreenshot)
+
+    expect(secondScreenshot).toHaveAttribute('aria-pressed', 'true')
+    expect(
+      within(projectCard).getByRole('img', {
+        name: /Screenshot 2 dari proyek Website Chatbot UKS & Perpustakaan/i,
+      }),
+    ).toBeInTheDocument()
   })
 })
 

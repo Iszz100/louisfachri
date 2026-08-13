@@ -1,36 +1,51 @@
+export const currentExperience = {
+  period: 'Saat ini',
+  status: 'Sedang berjalan',
+  title: 'PKL — Cybersecurity / Blue Team',
+  organization: 'Praktik Kerja Lapangan',
+  description:
+    'Selama PKL saya mempelajari defensive security melalui praktik langsung, mulai dari monitoring menggunakan Wazuh, konfigurasi OPNsense, IDS/IPS, analisis log, hingga troubleshooting Linux dan jaringan.',
+  focusAreas: [
+    'Security monitoring dan peninjauan event menggunakan Wazuh',
+    'Konfigurasi firewall serta pengujian jaringan dengan OPNsense',
+    'Pembelajaran IDS/IPS, SIEM, dan analisis log',
+    'Troubleshooting Linux, Docker, dan konektivitas jaringan',
+  ],
+}
+
 export const timeline = [
   {
     year: '2023',
-    title: 'Mulai Belajar Dasar IT dan Web',
+    title: 'Mulai Mengenal Dasar IT',
     description:
-      'Mulai membangun fondasi dasar IT di SMK SIJA, termasuk logika dasar, pengenalan jaringan, dan konsep web sederhana.',
+      'Mulai mempelajari dasar IT, logika, jaringan, dan web di jurusan SIJA.',
   },
   {
     year: '2024',
-    title: 'Mulai Memahami Backend dan Struktur Sistem',
+    title: 'Backend dan Sistem',
     description:
-      'Belajar bagaimana aplikasi terhubung dengan sistem di belakang layar, termasuk struktur service dan alur data sederhana.',
+      'Mulai memahami hubungan aplikasi dengan backend, service, dan alur data sederhana.',
   },
   {
     year: '2025',
-    title: 'Fokus Linux dan Administrasi Server',
+    title: 'Linux dan Administrasi Server',
     description:
-      'Memperdalam Linux command line, setup service server, manajemen akses, dan troubleshooting saat service mengalami kendala.',
+      'Berlatih Linux command line, setup service, manajemen akses, dan troubleshooting server.',
   },
   {
     year: '2026',
-    title: 'Persiapan PKL dan Eksplor Keamanan Sistem + CTF',
+    title: 'Cybersecurity & Blue Team',
     description:
-      'Masuk fase persiapan PKL dengan fokus latihan keamanan sistem dasar, hardening sederhana, dan challenge CTF untuk melatih analisis.',
+      'Menjalani PKL dan mempelajari security monitoring, firewall, IDS/IPS, SIEM, serta troubleshooting jaringan.',
   },
 ]
 
 export const roadmap = [
   {
     year: '2027',
-    title: 'Pendalaman Skill dan Kesiapan Kerja',
+    title: 'Memperdalam Skill dan Persiapan Kerja',
     description:
-      'Menargetkan pendalaman skill system administrator dan cybersecurity dasar agar lebih siap masuk dunia kerja setelah lulus.',
+      'Memperdalam kemampuan System Administration dan Cybersecurity serta mempersiapkan diri untuk dunia kerja setelah lulus.',
   },
 ]
 

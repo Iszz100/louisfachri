@@ -161,8 +161,9 @@ export default function CommandPalette({ registerShortcut = true }) {
         className="focus-ring min-h-11 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1.5 text-[11px] uppercase tracking-[0.15em] text-slate-300 transition hover:border-cyan-300/70 hover:text-cyan-200"
         aria-haspopup="dialog"
         aria-expanded={open}
+        aria-label="Perintah Ctrl+K"
       >
-        Perintah Ctrl+K
+        Ctrl + K
       </button>
 
       {createPortal(<AnimatePresence>

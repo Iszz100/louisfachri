@@ -114,7 +114,7 @@ export const projects = [
     problem:
       'Tujuan belajar saya adalah menguji dan meningkatkan ketahanan web service Flask terhadap simulasi serangan Slow HTTP DDoS di lingkungan server Linux.',
     solution:
-      'Saya melakukan simulasi serangan dengan slowhttptest, monitoring performa server saat serangan berjalan, lalu memperkuat konfigurasi aplikasi menggunakan Gunicorn, optimasi Flask (non-debug), dan restart policy di Docker Compose.',
+      'Saya melakukan simulasi Slow HTTP menggunakan slowhttptest, memonitor performa server saat pengujian berlangsung, kemudian memperbaiki konfigurasi aplikasi menggunakan Gunicorn, Flask non-debug, serta restart policy pada Docker Compose.',
     impact:
       'Saya belajar membandingkan perilaku layanan sebelum dan sesudah perubahan konfigurasi, dari layer aplikasi sampai container.',
     documentedOutput: 'Dokumentasi pengujian mencakup kondisi 502, monitoring resource, konfigurasi Gunicorn, slowhttptest, dan restart policy Docker Compose.',
@@ -136,8 +136,8 @@ export const projects = [
       'Nonaktifkan mode debug Flask dan rapikan konfigurasi runtime agar lebih aman',
       'Terapkan restart policy Docker Compose untuk menjaga service tetap pulih otomatis setelah gangguan',
     ],
-    image: cyberPhoto7,
-    images: [cyberPhoto0, cyberPhoto1, cyberPhoto2, cyberPhoto3, cyberPhoto4, cyberPhoto5, cyberPhoto6, cyberPhoto7],
+    image: cyberPhoto1,
+    images: [cyberPhoto1, cyberPhoto0, cyberPhoto2, cyberPhoto3, cyberPhoto4, cyberPhoto5, cyberPhoto6, cyberPhoto7],
   },
   {
     id: 'p-4',

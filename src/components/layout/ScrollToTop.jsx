@@ -18,9 +18,12 @@ export default function ScrollToTop() {
         return undefined
       }
 
+      let cancelled = false
+      let hasScheduledScroll = false
+
       const scrollToHashTarget = () => {
         const target = document.getElementById(targetId)
-        if (!target) return false
+        if (!target || hasScheduledScroll) return false
 
         const pendingSections = [...document.querySelectorAll('[data-deferred-section][data-loaded="false"]')]
           .some((section) => {
@@ -30,29 +33,45 @@ export default function ScrollToTop() {
 
         if (pendingSections) return false
 
-        target.scrollIntoView({ behavior: 'auto', block: 'start' })
+        hasScheduledScroll = true
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => {
+            if (cancelled) return
+            target.scrollIntoView({ behavior: 'auto', block: 'start' })
 
-        if (shouldMoveFocus) {
-          const heading = target.querySelector('h1, h2, h3') ?? target
-          heading.setAttribute('tabindex', '-1')
-          heading.focus({ preventScroll: true })
-        }
+            if (shouldMoveFocus) {
+              const heading = target.querySelector('h1, h2, h3') ?? target
+              heading.setAttribute('tabindex', '-1')
+              heading.focus({ preventScroll: true })
+            }
+          })
+        })
 
         return true
       }
 
-      if (scrollToHashTarget()) return
+      const observer = new MutationObserver(() => {
+        if (scrollToHashTarget()) observer.disconnect()
+      })
+      observer.observe(document.getElementById('main-content') ?? document.body, {
+        attributes: true,
+        attributeFilter: ['data-loaded'],
+        childList: true,
+        subtree: true,
+      })
 
-      const start = performance.now()
-      const intervalId = setInterval(() => {
-        const reached = scrollToHashTarget()
-        const timedOut = performance.now() - start > 3000
-        if (reached || timedOut) {
-          clearInterval(intervalId)
-        }
-      }, 90)
+      const timeoutId = window.setTimeout(() => {
+        scrollToHashTarget()
+        observer.disconnect()
+      }, 8000)
 
-      return () => clearInterval(intervalId)
+      if (scrollToHashTarget()) observer.disconnect()
+
+      return () => {
+        cancelled = true
+        observer.disconnect()
+        window.clearTimeout(timeoutId)
+      }
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })

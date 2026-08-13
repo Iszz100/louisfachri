@@ -1,11 +1,10 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import SectionHeading from '../components/common/SectionHeading'
 import { education } from '../data/experience'
-import useResponsiveMotion from '../hooks/useResponsiveMotion'
-import { sectionReveal, staggerContainer } from '../utils/motion'
+import { cardInteraction, sectionReveal, staggerContainer } from '../utils/motion'
 
 export default function EducationSection() {
-  const { reduceMotion } = useResponsiveMotion()
+  const shouldReduceMotion = useReducedMotion()
 
   if (!education.length) return null
 
@@ -14,21 +13,21 @@ export default function EducationSection() {
       <div className="container-shell">
         <motion.div
           variants={sectionReveal}
-          initial={reduceMotion ? false : 'hidden'}
+          initial={shouldReduceMotion ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
         >
           <SectionHeading
-            eyebrow="Pendidikan"
-            title="Fondasi pendidikan teknologi saya."
-            description="Pendidikan formal yang mendukung fokus belajar saya pada administrasi sistem, jaringan, dan keamanan siber."
+            eyebrow="Education"
+            title="Pendidikan"
+            description="Pendidikan formal yang mendukung fokus belajar saya di bidang sistem, jaringan, dan cybersecurity."
             headingId="education-heading"
           />
         </motion.div>
 
         <motion.div
           variants={staggerContainer}
-          initial={reduceMotion ? false : 'hidden'}
+          initial={shouldReduceMotion ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
           className="grid gap-5"
@@ -37,7 +36,8 @@ export default function EducationSection() {
             <motion.article
               key={`${item.institution}-${item.startYear}`}
               variants={sectionReveal}
-              className="glass-panel rounded-2xl p-6 shadow-card md:p-8"
+              whileHover={shouldReduceMotion ? undefined : cardInteraction.hover}
+              className="glass-panel polish-card rounded-2xl p-6 shadow-card md:p-7"
             >
               <div className="flex flex-col justify-between gap-5 md:flex-row md:items-start">
                 <div>

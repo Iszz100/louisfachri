@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         bg: {
-          primary: '#070B14',
+          primary: '#060A12',
           surface: '#0F172A',
           elevated: '#111827',
         },
@@ -16,8 +16,8 @@ export default {
         },
       },
       boxShadow: {
-        glow: '0 0 0 1px rgba(56,189,248,0.22), 0 8px 30px rgba(59,130,246,0.22)',
-        card: '0 8px 30px rgba(2,6,23,0.65)',
+        glow: '0 0 0 1px rgba(56,189,248,0.18), 0 8px 24px rgba(8,145,178,0.15)',
+        card: '0 18px 50px rgba(2,6,23,0.32)',
       },
       backdropBlur: {
         xs: '2px',
@@ -47,4 +47,3 @@ export default {
   },
   plugins: [],
 }
-

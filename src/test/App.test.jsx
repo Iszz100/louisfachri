@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router'
 import { describe, expect, it } from 'vitest'
 import App from '../App'
 import CommandPalette from '../components/signature/CommandPalette'
+import { projects } from '../data/projects'
 import ProjectsSection from '../sections/ProjectsSection'
 
 function renderApp(path = '/') {
@@ -55,6 +56,18 @@ describe('routing and page metadata', () => {
     renderApp('/#project-p-4')
 
     await waitFor(() => expect(document.getElementById('project-p-4')).toBeInTheDocument())
+  })
+
+  it('opens the OPNsense lab from its shareable project anchor', async () => {
+    renderApp('/#project-opnsense-transparent-bridge-ids-ips')
+
+    await waitFor(() => {
+      expect(document.getElementById('project-opnsense-transparent-bridge-ids-ips')).toBeInTheDocument()
+    })
+    const projectCard = document.getElementById('project-opnsense-transparent-bridge-ids-ips')
+    expect(within(projectCard).getByRole('heading', {
+      name: 'OPNsense Transparent Bridge & IDS/IPS Security Lab',
+    })).toBeInTheDocument()
   })
 
   it('renders a noindex 404 page for an unknown route', async () => {
@@ -136,11 +149,11 @@ describe('project showcase', () => {
     )
 
     expect(screen.getAllByRole('article')).toHaveLength(4)
-    expect(screen.getByText('4 dari 5 proyek ditampilkan')).toBeInTheDocument()
+    expect(screen.getByText('4 dari 6 proyek ditampilkan')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Lihat Semua Project' }))
-    expect(screen.getAllByRole('article')).toHaveLength(5)
-    expect(screen.getByText('5 proyek ditampilkan')).toBeInTheDocument()
+    expect(screen.getAllByRole('article')).toHaveLength(6)
+    expect(screen.getByText('6 proyek ditampilkan')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Tampilkan Lebih Sedikit' }))
     expect(screen.getAllByRole('article')).toHaveLength(4)
@@ -161,6 +174,23 @@ describe('project showcase', () => {
     expect(screen.queryByRole('button', { name: 'Lihat Semua Project' })).not.toBeInTheDocument()
   })
 
+  it('shows the OPNsense lab in the Cybersecurity filter', async () => {
+    const user = userEvent.setup()
+    render(
+      <MemoryRouter>
+        <ProjectsSection />
+      </MemoryRouter>,
+    )
+
+    await user.click(screen.getByRole('button', { name: 'Cybersecurity' }))
+
+    expect(screen.getAllByRole('article')).toHaveLength(2)
+    expect(screen.getByText('2 proyek ditampilkan')).toBeInTheDocument()
+    expect(screen.getByRole('heading', {
+      name: 'OPNsense Transparent Bridge & IDS/IPS Security Lab',
+    })).toBeInTheDocument()
+  })
+
   it('keeps the screenshot gallery available inside project details', async () => {
     const user = userEvent.setup()
     render(
@@ -175,7 +205,7 @@ describe('project showcase', () => {
     const projectCard = projectHeading.closest('article')
     await user.click(within(projectCard).getByText('Lihat Detail Proyek'))
 
-    const secondScreenshot = within(projectCard).getByRole('button', { name: 'Tampilkan screenshot 2 dari 4' })
+    const secondScreenshot = within(projectCard).getByRole('button', { name: /^Tampilkan screenshot 2 dari 4:/ })
     await user.click(secondScreenshot)
 
     expect(secondScreenshot).toHaveAttribute('aria-pressed', 'true')
@@ -184,6 +214,64 @@ describe('project showcase', () => {
         name: /Screenshot 2 dari proyek Website Chatbot UKS & Perpustakaan/i,
       }),
     ).toBeInTheDocument()
+  })
+
+  it('navigates the OPNsense gallery and lightbox with the keyboard', async () => {
+    const user = userEvent.setup()
+    render(
+      <MemoryRouter>
+        <ProjectsSection />
+      </MemoryRouter>,
+    )
+
+    const projectHeading = screen.getByRole('heading', {
+      name: 'OPNsense Transparent Bridge & IDS/IPS Security Lab',
+    })
+    const projectCard = projectHeading.closest('article')
+    await user.click(within(projectCard).getByText('Lihat Detail Proyek'))
+
+    expect(within(projectCard).getAllByRole('button', { name: /^Tampilkan screenshot/ })).toHaveLength(5)
+    expect(within(projectCard).getByText('1 dari 18 gambar')).toBeInTheDocument()
+
+    const openLightbox = within(projectCard).getByRole('button', {
+      name: 'Perbesar gambar: Topologi lab keamanan jaringan',
+    })
+    await user.click(openLightbox)
+
+    const dialog = screen.getByRole('dialog', {
+      name: 'Galeri OPNsense Transparent Bridge & IDS/IPS Security Lab',
+    })
+    expect(within(dialog).getByRole('img', {
+      name: 'Topologi lab OPNsense Transparent Filtering Bridge dan IDS IPS',
+    })).toBeInTheDocument()
+
+    await user.keyboard('{ArrowRight}')
+    expect(within(dialog).getByRole('img', {
+      name: 'Tahap awal akses management dan configuration wizard OPNsense',
+    })).toBeInTheDocument()
+    expect(within(dialog).getByText('Tahap awal akses dan konfigurasi OPNsense')).toBeInTheDocument()
+
+    await user.keyboard('{Escape}')
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
+    await waitFor(() => expect(openLightbox).toHaveFocus())
+  })
+
+  it('uses 18 ordered WebP assets with dimensions and captions for the OPNsense lab', () => {
+    const project = projects.find((item) => item.id === 'opnsense-transparent-bridge-ids-ips')
+
+    expect(project.gallery).toHaveLength(18)
+    expect(project.gallery[0].caption).toBe('Topologi lab keamanan jaringan')
+    expect(project.gallery[17].caption).toBe(
+      'Pengujian aman menggunakan EICAR test file untuk validasi filtering/IPS',
+    )
+    expect(new Set(project.gallery.map((item) => item.src)).size).toBe(18)
+    project.gallery.forEach((item) => {
+      expect(item.src).toMatch(/\.webp$/)
+      expect(item.width).toBeGreaterThan(0)
+      expect(item.height).toBeGreaterThan(0)
+      expect(item.alt).not.toBe('screenshot')
+      expect(item.caption).toBeTruthy()
+    })
   })
 })
 

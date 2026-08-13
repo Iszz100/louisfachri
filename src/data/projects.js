@@ -30,10 +30,235 @@ import iotAiDoc7 from '../assets/project_iot_ai_7.webp'
 import iotAiDoc8 from '../assets/project_iot_ai_8.webp'
 import iotAiDoc10 from '../assets/project_iot_ai_10.webp'
 import iotAiDoc11 from '../assets/project_iot_ai_11.webp'
+import opnsenseTopology from '../assets/projects/opnsense-security-lab/01-network-topology.webp'
+import opnsenseInitialManagement from '../assets/projects/opnsense-security-lab/02-opnsense-initial-management.webp'
+import opnsenseInterfaceAssignments from '../assets/projects/opnsense-security-lab/03-interface-assignments.webp'
+import opnsenseLanBridge from '../assets/projects/opnsense-security-lab/04-lan-bridge0.webp'
+import opnsenseManagementIpv4 from '../assets/projects/opnsense-security-lab/05-management-ipv4.webp'
+import opnsenseBridgeMembers from '../assets/projects/opnsense-security-lab/06-bridge-members.webp'
+import opnsenseFirewallRules from '../assets/projects/opnsense-security-lab/07-opnsense-firewall-rules.webp'
+import mikrotikAddressing from '../assets/projects/opnsense-security-lab/08-mikrotik-addressing.webp'
+import mikrotikNat from '../assets/projects/opnsense-security-lab/09-mikrotik-nat.webp'
+import mikrotikFirewallFilter from '../assets/projects/opnsense-security-lab/10-mikrotik-firewall-filter.webp'
+import opnsenseWebgui from '../assets/projects/opnsense-security-lab/11-opnsense-webgui.webp'
+import opnsenseManagementAccess from '../assets/projects/opnsense-security-lab/12-opnsense-management-access.webp'
+import suricataNetmapIps from '../assets/projects/opnsense-security-lab/13-suricata-netmap-ips.webp'
+import idsRulesets from '../assets/projects/opnsense-security-lab/14-ids-rulesets.webp'
+import malwarePhishingRulesets from '../assets/projects/opnsense-security-lab/15-malware-phishing-rulesets.webp'
+import ipsAlertToDrop from '../assets/projects/opnsense-security-lab/16-ips-alert-to-drop.webp'
+import ipsRulesDrop from '../assets/projects/opnsense-security-lab/17-ips-rules-drop.webp'
+import eicarSafeTest from '../assets/projects/opnsense-security-lab/18-eicar-safe-test.webp'
+
+const opnsenseSecurityLabGallery = [
+  {
+    src: opnsenseTopology,
+    width: 574,
+    height: 800,
+    group: 'Architecture',
+    caption: 'Topologi lab keamanan jaringan',
+    alt: 'Topologi lab OPNsense Transparent Filtering Bridge dan IDS IPS',
+  },
+  {
+    src: opnsenseInitialManagement,
+    width: 1600,
+    height: 718,
+    group: 'OPNsense Bridge & Management',
+    caption: 'Tahap awal akses dan konfigurasi OPNsense',
+    alt: 'Tahap awal akses management dan configuration wizard OPNsense',
+  },
+  {
+    src: opnsenseInterfaceAssignments,
+    width: 1600,
+    height: 625,
+    group: 'OPNsense Bridge & Management',
+    caption: 'Assignment interface WAN, LAN/bridge, dan CLIENT',
+    alt: 'Assignment interface WAN LAN bridge dan CLIENT pada OPNsense',
+  },
+  {
+    src: opnsenseLanBridge,
+    width: 1600,
+    height: 625,
+    group: 'OPNsense Bridge & Management',
+    caption: 'Interface LAN menggunakan device bridge0',
+    alt: 'Konfigurasi interface LAN OPNsense menggunakan device bridge0',
+  },
+  {
+    src: opnsenseManagementIpv4,
+    width: 1600,
+    height: 710,
+    group: 'OPNsense Bridge & Management',
+    caption: 'Konfigurasi IPv4 pada interface management',
+    alt: 'Konfigurasi IPv4 pada interface management OPNsense dengan informasi sensitif disensor',
+  },
+  {
+    src: opnsenseBridgeMembers,
+    width: 1600,
+    height: 710,
+    group: 'OPNsense Bridge & Management',
+    caption: 'Bridge interface dengan member WAN dan CLIENT',
+    alt: 'Konfigurasi bridge0 OPNsense dengan member interface WAN dan CLIENT',
+  },
+  {
+    src: opnsenseFirewallRules,
+    width: 1600,
+    height: 710,
+    group: 'OPNsense Bridge & Management',
+    caption: 'Firewall rules untuk akses dan trafik bridge',
+    alt: 'Firewall rules OPNsense untuk akses management dan trafik bridge',
+  },
+  {
+    src: mikrotikAddressing,
+    width: 819,
+    height: 733,
+    group: 'MikroTik Routing & Management Access',
+    caption: 'Konfigurasi addressing pada MikroTik',
+    alt: 'Konfigurasi IP addressing MikroTik dengan alamat jaringan disensor',
+  },
+  {
+    src: mikrotikNat,
+    width: 1245,
+    height: 323,
+    group: 'MikroTik Routing & Management Access',
+    caption: 'Konfigurasi NAT, DNAT, dan SNAT untuk kebutuhan management',
+    alt: 'Konfigurasi NAT DNAT dan SNAT MikroTik dengan alamat jaringan disensor',
+  },
+  {
+    src: mikrotikFirewallFilter,
+    width: 1245,
+    height: 244,
+    group: 'MikroTik Routing & Management Access',
+    caption: 'Firewall filter MikroTik untuk mengatur trafik yang diperbolehkan',
+    alt: 'Firewall filter MikroTik untuk mengatur trafik lab yang diperbolehkan',
+  },
+  {
+    src: opnsenseWebgui,
+    width: 1600,
+    height: 683,
+    group: 'MikroTik Routing & Management Access',
+    caption: 'Pengaturan akses WebGUI OPNsense',
+    alt: 'Pengaturan akses WebGUI dan alternate hostname OPNsense dengan informasi sensitif disensor',
+  },
+  {
+    src: opnsenseManagementAccess,
+    width: 1600,
+    height: 718,
+    group: 'MikroTik Routing & Management Access',
+    caption: 'Validasi akses management OPNsense',
+    alt: 'Validasi akses halaman management OPNsense',
+  },
+  {
+    src: suricataNetmapIps,
+    width: 1600,
+    height: 747,
+    group: 'IDS/IPS Configuration',
+    caption: 'Suricata IDS/IPS diaktifkan menggunakan Netmap (IPS)',
+    alt: 'Konfigurasi Suricata menggunakan capture mode Netmap IPS pada OPNsense',
+  },
+  {
+    src: idsRulesets,
+    width: 1600,
+    height: 747,
+    group: 'IDS/IPS Configuration',
+    caption: 'Aktivasi ruleset IDS/IPS',
+    alt: 'Daftar ruleset IDS IPS yang diaktifkan pada OPNsense',
+  },
+  {
+    src: malwarePhishingRulesets,
+    width: 1600,
+    height: 747,
+    group: 'IDS/IPS Configuration',
+    caption: 'Ruleset terkait malware, phishing, dan kategori keamanan lainnya',
+    alt: 'Ruleset Suricata terkait malware phishing dan kategori keamanan lainnya',
+  },
+  {
+    src: ipsAlertToDrop,
+    width: 1600,
+    height: 747,
+    group: 'IDS/IPS Configuration',
+    caption: 'Policy IPS untuk mengubah action dari Alert menjadi Drop',
+    alt: 'Policy Suricata pada OPNsense mengubah action Alert menjadi Drop',
+  },
+  {
+    src: ipsRulesDrop,
+    width: 1600,
+    height: 747,
+    group: 'IDS/IPS Configuration',
+    caption: 'Verifikasi rules menggunakan action Drop',
+    alt: 'Verifikasi rules Suricata menggunakan action Drop pada OPNsense',
+  },
+  {
+    src: eicarSafeTest,
+    width: 1600,
+    height: 253,
+    group: 'Safe Validation',
+    caption: 'Pengujian aman menggunakan EICAR test file untuk validasi filtering/IPS',
+    alt: 'EICAR safe test pada terminal untuk validasi filtering dan IPS di lingkungan lab',
+  },
+]
 
 export const projectCategories = ['Semua', 'System Administrator', 'Cybersecurity', 'Lainnya']
 
 export const projects = [
+  {
+    id: 'opnsense-transparent-bridge-ids-ips',
+    title: 'Implementasi OPNsense Transparent Filtering Bridge & IDS/IPS pada Lab Keamanan Jaringan',
+    displayTitle: 'OPNsense Transparent Bridge & IDS/IPS Security Lab',
+    category: 'Cybersecurity',
+    focus: 'Network Security / Blue Team',
+    cardDescription:
+      'Praktik konfigurasi OPNsense sebagai filtering bridge pada lab jaringan, dilanjutkan dengan firewall, Suricata IDS/IPS, ruleset keamanan, dan validasi menggunakan EICAR safe test.',
+    problemLabel: 'Latar Belakang',
+    problem:
+      'Pada project ini saya mempelajari penerapan OPNsense dalam sebuah lab keamanan jaringan. OPNsense dikonfigurasi sebagai bagian dari jalur trafik agar saya dapat mempelajari bridge interface, firewall, akses management, serta IDS/IPS menggunakan Suricata.',
+    solution:
+      'Saya menyusun topologi lab, melakukan assignment dan bridge interface OPNsense, mengatur jalur management serta firewall, lalu menyesuaikan routing dan NAT pada MikroTik. Setelah itu saya mengaktifkan Suricata dalam mode IPS, memilih ruleset yang relevan, membuat policy Alert menjadi Drop, dan melakukan validasi aman menggunakan EICAR test file.',
+    impact:
+      'Saya memahami hubungan antara interface bridge, jalur management, firewall, routing dan NAT MikroTik, serta proses konfigurasi Suricata dari aktivasi ruleset sampai policy IPS.',
+    learningOutcomes: [
+      'Memahami cara kerja interface bridge pada OPNsense',
+      'Memahami pemisahan jalur management dan trafik',
+      'Memahami hubungan routing dan NAT MikroTik dengan OPNsense',
+      'Memahami dasar konfigurasi firewall rule',
+      'Memahami proses aktivasi Suricata IDS/IPS',
+      'Memahami penggunaan ruleset dan policy Alert menjadi Drop',
+      'Memahami pentingnya validasi dengan metode pengujian yang aman',
+    ],
+    documentedOutput:
+      'Dari praktik ini saya memahami alur konfigurasi OPNsense mulai dari interface dan bridge, pengaturan firewall, sampai penerapan Suricata dalam mode IPS. Saya juga melakukan validasi menggunakan EICAR safe test untuk mengamati perilaku filtering dan rule yang telah dikonfigurasi.',
+    outputLabel: 'Hasil Praktik',
+    techStack: [
+      'OPNsense',
+      'Suricata',
+      'MikroTik',
+      'IDS/IPS',
+      'Firewall',
+      'Network Security',
+      'Transparent Bridge',
+      'Linux',
+      'EICAR',
+    ],
+    cardTechStack: ['OPNsense', 'Suricata', 'MikroTik', 'IDS/IPS'],
+    role: 'Cybersecurity / Blue Team Intern — Hands-on Lab',
+    environment: ['OPNsense', 'MikroTik RouterOS', 'Suricata IDS/IPS', 'Linux Client', 'Network Lab'],
+    focusAreas: ['Transparent Bridge', 'Firewall', 'Routing / NAT', 'IDS / IPS', 'Security Validation'],
+    engineeringNotes:
+      'Project ini merupakan hands-on security lab selama proses belajar dan PKL, bukan implementasi enterprise production. Pengujian menggunakan EICAR antivirus test file yang aman dan memang ditujukan untuk validasi mekanisme keamanan; dokumentasi ini tidak digunakan untuk mengklaim tingkat pemblokiran tertentu.',
+    engineeringNotesLabel: 'Catatan pengujian aman',
+    detailListLabel: 'Langkah praktik',
+    architecturalDecisions: [
+      'Memahami dan menyusun topologi lab keamanan jaringan',
+      'Melakukan konfigurasi awal serta assignment interface WAN, LAN/bridge, dan CLIENT pada OPNsense',
+      'Membuat bridge interface dan mengatur interface management, WebGUI, serta firewall rules',
+      'Menyesuaikan addressing, routing, NAT, dan firewall filter pada MikroTik untuk kebutuhan akses lab',
+      'Mengaktifkan Suricata IDS/IPS dengan capture mode Netmap (IPS)',
+      'Mengaktifkan ruleset yang relevan, termasuk kategori malware, exploit, dan phishing yang terdokumentasi',
+      'Membuat policy untuk mengubah action rule dari Alert menjadi Drop lalu memeriksa action pada rules',
+      'Melakukan safe validation menggunakan EICAR test file untuk mengamati perilaku filtering dan IPS',
+    ],
+    image: opnsenseTopology,
+    images: opnsenseSecurityLabGallery.map((item) => item.src),
+    gallery: opnsenseSecurityLabGallery,
+  },
   {
     id: 'p-1',
     title: 'Website Chatbot UKS & Perpustakaan (Flask) - Deployment & Operasional Service',

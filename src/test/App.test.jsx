@@ -35,6 +35,21 @@ describe('routing and page metadata', () => {
     )
   })
 
+  it('renders the full project archive on its own route with unique metadata', async () => {
+    renderApp('/projects')
+
+    expect(await screen.findByRole('heading', {
+      level: 1,
+      name: 'Praktik nyata, bukan sekadar daftar teknologi.',
+    })).toBeInTheDocument()
+    expect(screen.getAllByRole('article')).toHaveLength(projects.length)
+    await waitFor(() => expect(document.title).toBe('Projects | Louis Fachri'))
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      'https://louisfachri.my.id/projects',
+    )
+  })
+
   it('navigates from home to certifications and updates metadata', async () => {
     const user = userEvent.setup()
     renderApp()

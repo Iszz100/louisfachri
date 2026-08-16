@@ -242,7 +242,7 @@ export default function CommandPalette({ registerShortcut = true }) {
                       }`}
                     >
                       <span>{command.label}</span>
-                      <span className="text-[10px] uppercase tracking-[0.16em] text-slate-500">Jalankan</span>
+                      <span className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Jalankan</span>
                     </button>
                   )
                 })}

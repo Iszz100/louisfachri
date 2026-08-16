@@ -50,7 +50,7 @@ function ProjectGalleryControls({ activeIndex, imageId, items, onSelect, title }
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-slate-400">Galeri proyek</p>
-          <p className="mt-1 text-xs text-slate-500">{activeIndex + 1} dari {items.length} gambar</p>
+          <p className="mt-1 text-xs text-slate-400">{activeIndex + 1} dari {items.length} gambar</p>
         </div>
         <div className="flex gap-2">
           <button
@@ -113,7 +113,7 @@ function ProjectGalleryControls({ activeIndex, imageId, items, onSelect, title }
   )
 }
 
-function ProjectCard({ isWide, project, shouldReduceMotion }) {
+function ProjectCard({ headingLevel = 3, isWide, project, shouldReduceMotion }) {
   const galleryItems = getProjectGallery(project)
   const [activeIndex, setActiveIndex] = useState(0)
   const [detailsOpen, setDetailsOpen] = useState(false)
@@ -170,7 +170,7 @@ function ProjectCard({ isWide, project, shouldReduceMotion }) {
                 <p className="text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-cyan-300">{activeItem.group}</p>
                 <p className="mt-1 text-xs leading-5 text-slate-300">{activeItem.caption}</p>
               </div>
-              <span className="shrink-0 font-mono text-[0.62rem] text-slate-500">
+              <span className="shrink-0 font-mono text-[0.62rem] text-slate-400">
                 {String(activeIndex + 1).padStart(2, '0')}/{String(galleryItems.length).padStart(2, '0')}
               </span>
             </div>
@@ -183,9 +183,15 @@ function ProjectCard({ isWide, project, shouldReduceMotion }) {
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.17em] text-cyan-300">{project.category}</p>
           {project.focus ? <p className="text-[0.65rem] text-slate-400">{project.focus}</p> : null}
         </div>
-        <h3 className="mt-3 line-clamp-2 text-xl font-semibold leading-7 tracking-[-0.015em] text-slate-100">
-          {cardTitle}
-        </h3>
+        {headingLevel === 2 ? (
+          <h2 className="mt-3 line-clamp-2 text-xl font-semibold leading-7 tracking-[-0.015em] text-slate-100">
+            {cardTitle}
+          </h2>
+        ) : (
+          <h3 className="mt-3 line-clamp-2 text-xl font-semibold leading-7 tracking-[-0.015em] text-slate-100">
+            {cardTitle}
+          </h3>
+        )}
 
         <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-300">
           {project.cardDescription ?? project.solution}
@@ -352,7 +358,7 @@ function ProjectCard({ isWide, project, shouldReduceMotion }) {
   )
 }
 
-function ProjectsContent({ hash }) {
+function ProjectsContent({ hash, showAllByDefault = false, showHeading = true }) {
   const shouldReduceMotion = useReducedMotion()
   let decodedHash = ''
   try {
@@ -364,7 +370,7 @@ function ProjectsContent({ hash }) {
   const deepLinkedProjectIndex = projects.findIndex((project) => project.id === deepLinkedProjectId)
   const forceShowDeepLinkedProject = deepLinkedProjectIndex >= DEFAULT_PROJECT_LIMIT
   const [activeCategory, setActiveCategory] = useState('Semua')
-  const [showAllProjects, setShowAllProjects] = useState(false)
+  const [showAllProjects, setShowAllProjects] = useState(showAllByDefault)
   const isShowingAllProjects = showAllProjects || forceShowDeepLinkedProject
 
   const filteredProjects = useMemo(() => {
@@ -383,25 +389,31 @@ function ProjectsContent({ hash }) {
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category)
-    if (category === 'Semua') setShowAllProjects(false)
+    if (category === 'Semua') setShowAllProjects(showAllByDefault)
   }
 
   return (
-    <section className="section-padding border-y border-slate-800/60 bg-slate-950/25" aria-labelledby="projects-heading">
+    <section
+      className={showHeading ? 'section-padding border-y border-white/[0.07] bg-white/[0.015]' : 'pb-24 pt-4 md:pb-32'}
+      aria-labelledby={showHeading ? 'projects-heading' : undefined}
+      aria-label={showHeading ? undefined : 'Daftar semua proyek'}
+    >
       <div className="container-shell">
-        <motion.div
-          variants={sectionReveal}
-          initial={shouldReduceMotion ? false : 'hidden'}
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <SectionHeading
-            eyebrow="Projects"
-            title="Project & Praktik Saya"
-            description="Pilihan project yang saya kerjakan selama sekolah, pelatihan, kompetisi, dan proses belajar mandiri. Detail teknis dapat dibuka pada setiap project."
-            headingId="projects-heading"
-          />
-        </motion.div>
+        {showHeading ? (
+          <motion.div
+            variants={sectionReveal}
+            initial={shouldReduceMotion ? false : 'hidden'}
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <SectionHeading
+              eyebrow="Projects"
+              title="Project & Praktik Saya"
+              description="Pilihan project yang saya kerjakan selama sekolah, pelatihan, kompetisi, dan proses belajar mandiri. Detail teknis dapat dibuka pada setiap project."
+              headingId="projects-heading"
+            />
+          </motion.div>
+        ) : null}
 
         <div className="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter kategori proyek">
@@ -440,12 +452,13 @@ function ProjectsContent({ hash }) {
               key={project.id}
               project={project}
               shouldReduceMotion={shouldReduceMotion}
+              headingLevel={showHeading ? 3 : 2}
               isWide={visibleProjects.length % 2 === 1 && index === visibleProjects.length - 1}
             />
           ))}
         </motion.div>
 
-        {activeCategory === 'Semua' && filteredProjects.length > DEFAULT_PROJECT_LIMIT && !forceShowDeepLinkedProject ? (
+        {activeCategory === 'Semua' && filteredProjects.length > DEFAULT_PROJECT_LIMIT && !forceShowDeepLinkedProject && !showAllByDefault ? (
           <motion.div
             variants={sectionReveal}
             initial={shouldReduceMotion ? false : 'hidden'}
@@ -474,7 +487,7 @@ function ProjectsContent({ hash }) {
   )
 }
 
-export default function ProjectsSection() {
+export default function ProjectsSection({ showAllByDefault = false, showHeading = true }) {
   const { hash } = useLocation()
   let decodedHash = ''
   try {
@@ -484,5 +497,12 @@ export default function ProjectsSection() {
   }
   const viewKey = decodedHash.startsWith('#project-') ? decodedHash : 'project-showcase'
 
-  return <ProjectsContent key={viewKey} hash={decodedHash} />
+  return (
+    <ProjectsContent
+      key={`${viewKey}-${showAllByDefault}`}
+      hash={decodedHash}
+      showAllByDefault={showAllByDefault}
+      showHeading={showHeading}
+    />
+  )
 }

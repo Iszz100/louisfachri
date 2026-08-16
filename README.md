@@ -4,7 +4,8 @@ Portfolio profesional Louis Fachri Putra Jatmiko, Junior System Administrator da
 
 ## Halaman
 
-- `/` — profil, kapabilitas, proyek, perjalanan belajar, roadmap, pendidikan, dan kontak.
+- `/` — hero, fokus teknis, proyek pilihan, perjalanan ringkas, sertifikasi pilihan, dan kontak.
+- `/projects` — arsip seluruh project dengan filter, dokumentasi teknis, galeri, dan tautan repository.
 - `/sertifikasi` — daftar sertifikasi dengan pencarian, filter tahun/penerbit, dan pengurutan.
 - `*` — halaman 404 dengan status HTTP 404 dan metadata `noindex` pada deployment Netlify.
 
@@ -30,9 +31,9 @@ npm run build
 
 ## Production
 
-- Metadata SEO dikelola per route melalui `PageMeta`; proses build juga menghasilkan HTML statis untuk `/sertifikasi` dan halaman 404.
+- Metadata SEO dikelola per route melalui `PageMeta`; proses build juga menghasilkan HTML statis untuk `/projects`, `/sertifikasi`, dan halaman 404.
 - Header keamanan dan cache policy dikonfigurasi di `netlify.toml`.
-- Direct refresh `/sertifikasi` dikonfigurasi di `public/_redirects`; URL lain yang tidak dikenal memakai `404.html`.
+- Direct refresh `/projects` dan `/sertifikasi` dikonfigurasi di `public/_redirects`; URL lain yang tidak dikenal memakai `404.html`.
 - Sitemap dan robots tersedia di folder `public`.
 
 Perubahan tidak otomatis di-deploy. Push dan deployment dilakukan secara terpisah setelah verifikasi lokal.

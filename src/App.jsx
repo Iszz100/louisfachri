@@ -5,6 +5,7 @@ import ScrollToTop from './components/layout/ScrollToTop'
 import NotFoundPage from './pages/NotFoundPage'
 
 const HomePage = lazy(() => import('./pages/HomePage'))
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
 const CertificationsPage = lazy(() => import('./pages/CertificationsPage'))
 
 function App() {
@@ -17,8 +18,7 @@ function App() {
       >
         Lewati ke konten utama
       </a>
-      <div className="pointer-events-none fixed inset-0 -z-20 bg-tech-grid bg-[size:48px_48px] opacity-[0.08]" />
-      <div className="noise-texture pointer-events-none fixed inset-0 -z-20 opacity-[0.18]" />
+      <div className="site-ambient pointer-events-none fixed inset-0 -z-20" aria-hidden="true" />
 
       <Navbar />
       <ScrollToTop />
@@ -32,6 +32,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/sertifikasi" element={<CertificationsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

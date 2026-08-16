@@ -7,6 +7,14 @@ const baseHtml = await readFile(indexPath, 'utf8')
 
 const pages = [
   {
+    output: 'projects.html',
+    title: 'Projects | Louis Fachri',
+    description:
+      'Project dan hands-on lab Louis Fachri di bidang System Administration, IT Infrastructure, dan Cybersecurity.',
+    robots: 'index, follow',
+    canonical: 'https://louisfachri.my.id/projects',
+  },
+  {
     output: 'sertifikasi.html',
     title: 'Sertifikasi | Louis Fachri',
     description:

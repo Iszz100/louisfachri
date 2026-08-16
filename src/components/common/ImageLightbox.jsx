@@ -169,7 +169,7 @@ export default function ImageLightbox({ activeIndex, items, onClose, onSelect, o
                 <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-cyan-300">{activeItem.group}</p>
               ) : null}
               <p className="mt-1 text-sm leading-6 text-slate-300">{activeItem.caption}</p>
-              <p className="mt-1 hidden text-xs text-slate-500 sm:block">Gunakan tombol panah kiri/kanan untuk berpindah gambar.</p>
+              <p className="mt-1 hidden text-xs text-slate-400 sm:block">Gunakan tombol panah kiri/kanan untuk berpindah gambar.</p>
             </div>
           </motion.div>
         </motion.div>

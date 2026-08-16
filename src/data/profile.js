@@ -1,11 +1,12 @@
 export const profile = {
   name: 'Louis Fachri Putra Jatmiko',
-  role: 'System Administrator & Cybersecurity',
-  status: 'Cybersecurity Intern / SMK SIJA',
+  displayName: 'Louis Fachri',
+  role: 'Junior System Administrator & Cybersecurity Enthusiast',
+  status: 'Open to internship & junior opportunities',
   manifesto:
     'Saya belajar lewat praktik langsung: menyiapkan lab, membaca log, menguji konfigurasi, dan melakukan troubleshooting ketika menemukan masalah.',
   shortPitch:
-    'Saya siswa SIJA yang fokus belajar System Administration dan Cybersecurity. Saat ini saya menjalani PKL di bidang Cybersecurity / Blue Team dengan praktik menggunakan Wazuh, OPNsense, Linux, serta melakukan monitoring dan troubleshooting jaringan.',
+    'Membangun sistem yang andal, mengamankan infrastruktur, dan mendokumentasikan pembelajaran melalui praktik langsung.',
   location: 'Sidoarjo, Jawa Timur',
   currentFocus: ['Wazuh', 'OPNsense', 'Linux', 'Docker', 'Networking'],
   card: {
@@ -24,9 +25,8 @@ export const profile = {
 }
 
 export const navLinks = [
+  { id: 'hero', label: 'Beranda' },
   { id: 'featured-project', label: 'Proyek Pilihan' },
-  { id: 'capabilities', label: 'Fokus Teknis' },
-  { id: 'experience', label: 'PKL' },
-  { id: 'projects', label: 'Proyek' },
+  { id: 'about', label: 'Tentang' },
   { id: 'contact', label: 'Kontak' },
 ]

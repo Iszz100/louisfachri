@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         bg: {
-          primary: '#060A12',
-          surface: '#0F172A',
-          elevated: '#111827',
+          primary: '#080C12',
+          surface: '#0D131C',
+          elevated: '#121A25',
         },
         accent: {
           cyan: '#22D3EE',
@@ -16,8 +16,8 @@ export default {
         },
       },
       boxShadow: {
-        glow: '0 0 0 1px rgba(56,189,248,0.18), 0 8px 24px rgba(8,145,178,0.15)',
-        card: '0 18px 50px rgba(2,6,23,0.32)',
+        glow: '0 0 0 1px rgba(103,232,249,0.12), 0 12px 32px rgba(0,0,0,0.24)',
+        card: '0 22px 65px rgba(0,0,0,0.28)',
       },
       backdropBlur: {
         xs: '2px',

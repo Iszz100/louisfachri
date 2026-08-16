@@ -16,19 +16,12 @@ export default function CapabilitiesSection() {
   return (
     <section className="section-padding" aria-labelledby="capabilities-heading">
       <div className="container-shell">
-        <motion.div
-          variants={sectionReveal}
-          initial={shouldReduceMotion ? false : 'hidden'}
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          <SectionHeading
-            eyebrow="Core expertise"
-            title="Tiga area yang saya bangun dengan serius."
-            description="Fondasi teknis yang saya kembangkan lewat project sekolah, lab mandiri, dan pengalaman PKL."
-            headingId="capabilities-heading"
-          />
-        </motion.div>
+        <SectionHeading
+          eyebrow="Core expertise"
+          title="Tiga area yang saya bangun dengan serius."
+          description="Fondasi teknis yang saya kembangkan lewat project sekolah, lab mandiri, dan pengalaman PKL."
+          headingId="capabilities-heading"
+        />
 
         <motion.div
           variants={staggerContainer}
@@ -44,10 +37,10 @@ export default function CapabilitiesSection() {
               <motion.article
                 key={domain.id}
                 variants={sectionReveal}
-                className="polish-card group relative flex min-h-[270px] flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6 sm:p-7 md:last:col-span-2 md:last:w-[calc(50%-0.5rem)] md:last:justify-self-center lg:last:col-span-1 lg:last:w-auto"
+                className="expertise-card polish-card group relative flex min-h-[270px] flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6 sm:p-7 md:last:col-span-2 md:last:w-[calc(50%-0.5rem)] md:last:justify-self-center lg:last:col-span-1 lg:last:w-auto"
               >
                 <div className="flex items-center justify-between gap-4">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/[0.055] text-cyan-200">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/[0.055] text-cyan-200 transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-[3deg] group-hover:scale-105">
                     <Icon size={17} aria-hidden="true" />
                   </span>
                   <span className="font-mono text-[0.65rem] tracking-[0.16em] text-slate-400">/{domain.number}</span>

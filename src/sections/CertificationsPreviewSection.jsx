@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { FaArrowRight } from 'react-icons/fa6'
 import { Link } from 'react-router'
+import Reveal from '../components/common/Reveal'
 import SectionHeading from '../components/common/SectionHeading'
 import { certifications } from '../data/certifications'
 import { sectionReveal, staggerContainer } from '../utils/motion'
@@ -16,27 +17,23 @@ export default function CertificationsPreviewSection() {
   return (
     <section className="section-padding border-t border-white/[0.07]" aria-labelledby="certification-preview-heading">
       <div className="container-shell">
-        <motion.div
-          variants={sectionReveal}
-          initial={shouldReduceMotion ? false : 'hidden'}
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="flex flex-col justify-between gap-5 md:flex-row md:items-end"
-        >
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <SectionHeading
             eyebrow="Credentials"
             title="Pencapaian yang menguatkan proses belajar."
             description="Beberapa kompetisi dan pelatihan yang paling relevan dengan fokus saya di cybersecurity."
             headingId="certification-preview-heading"
           />
-          <Link
-            to="/sertifikasi"
-            className="group focus-ring mb-8 inline-flex min-h-11 w-fit shrink-0 items-center gap-2 rounded-lg border border-white/10 px-4 text-sm font-medium text-slate-300 transition hover:border-white/25 hover:text-white"
-          >
-            Semua Sertifikasi
-            <FaArrowRight className="transition-transform group-hover:translate-x-1" size={12} aria-hidden="true" />
-          </Link>
-        </motion.div>
+          <Reveal distance={12} delay={0.16} className="mb-8">
+            <Link
+              to="/sertifikasi"
+              className="group focus-ring inline-flex min-h-11 w-fit shrink-0 items-center gap-2 rounded-lg border border-white/10 px-4 text-sm font-medium text-slate-300 transition hover:border-white/25 hover:text-white"
+            >
+              Semua Sertifikasi
+              <FaArrowRight className="transition-transform group-hover:translate-x-1" size={12} aria-hidden="true" />
+            </Link>
+          </Reveal>
+        </div>
 
         <motion.div
           variants={staggerContainer}
@@ -70,7 +67,7 @@ export default function CertificationsPreviewSection() {
               <div className="p-5 sm:p-6">
                 <div className="flex items-center justify-between gap-4 font-mono text-[0.61rem] uppercase tracking-[0.12em]">
                   <span className="text-cyan-300">{certification.year}</span>
-                  <span className="truncate text-right text-slate-400">{certification.issuer}</span>
+                  <span className="truncate text-right text-slate-400 transition-transform duration-300 group-hover:scale-[1.02]">{certification.issuer}</span>
                 </div>
                 <h3 className="mt-4 text-base font-semibold leading-6 text-slate-100">{certification.title}</h3>
               </div>

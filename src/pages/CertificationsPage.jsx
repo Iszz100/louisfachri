@@ -174,9 +174,9 @@ export default function CertificationsPage() {
                     <motion.article
                       key={certification.id}
                       variants={sectionReveal}
-                      className="glass-panel interactive-card flex h-full flex-col overflow-hidden rounded-2xl"
+                      className="glass-panel polish-card group flex h-full flex-col overflow-hidden rounded-2xl"
                     >
-                      <div className="relative aspect-[16/10] w-full border-b border-slate-800 bg-slate-950/70 p-2">
+                      <div className="media-zoom relative aspect-[16/10] w-full overflow-hidden border-b border-slate-800 bg-slate-950/70 p-2">
                         <img
                           src={certification.image}
                           srcSet={`${certification.imageSmall} 480w, ${certification.imageMedium} 640w, ${certification.image} ${certification.imageWidth}w`}
@@ -201,7 +201,7 @@ export default function CertificationsPage() {
                         <dl className="grid gap-3 text-sm sm:grid-cols-2">
                           <div className="rounded-lg border border-slate-700 bg-slate-900/70 p-3">
                             <dt className="text-[11px] uppercase tracking-[0.16em] text-slate-400">Penerbit</dt>
-                            <dd className="mt-1 text-slate-200">{certification.issuer}</dd>
+                            <dd className="mt-1 origin-left text-slate-200 transition-transform duration-300 group-hover:scale-[1.02]">{certification.issuer}</dd>
                           </div>
                           <div className="rounded-lg border border-slate-700 bg-slate-900/70 p-3">
                             <dt className="text-[11px] uppercase tracking-[0.16em] text-slate-400">Tanggal terbit</dt>

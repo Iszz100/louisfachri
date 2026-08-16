@@ -1,13 +1,35 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { FaArrowRight, FaEnvelope, FaGithub, FaLinkedinIn } from 'react-icons/fa6'
 import { profile } from '../data/profile'
-import { sectionReveal } from '../utils/motion'
+import { premiumEase } from '../utils/motion'
 
 const footerLinks = [
   { label: 'GitHub', href: profile.links.github, icon: <FaGithub size={13} aria-hidden="true" /> },
   { label: 'LinkedIn', href: profile.links.linkedin, icon: <FaLinkedinIn size={13} aria-hidden="true" /> },
   { label: 'Email', href: profile.links.email, icon: <FaEnvelope size={13} aria-hidden="true" /> },
 ]
+
+const contactSequence = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.64,
+      ease: premiumEase,
+      staggerChildren: 0.09,
+    },
+  },
+}
+
+const contactItem = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.58, ease: premiumEase },
+  },
+}
 
 export default function ClosingSection() {
   const currentYear = new Date().getFullYear()
@@ -17,7 +39,7 @@ export default function ClosingSection() {
     <footer className="border-t border-white/[0.07] pt-5" aria-labelledby="contact-heading">
       <div className="container-shell py-10 sm:py-14">
         <motion.section
-          variants={sectionReveal}
+          variants={contactSequence}
           initial={shouldReduceMotion ? false : 'hidden'}
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
@@ -25,22 +47,26 @@ export default function ClosingSection() {
         >
           <div className="relative z-10 grid gap-9 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="technical-label text-cyan-300">Have a role or project in mind?</p>
-              <h2 id="contact-heading" className="mt-5 text-[clamp(2.25rem,5.3vw,4.8rem)] font-semibold leading-[1] tracking-[-0.05em] text-slate-50">
+              <motion.p variants={shouldReduceMotion ? undefined : contactItem} className="technical-label text-cyan-300">Have a role or project in mind?</motion.p>
+              <motion.h2 variants={shouldReduceMotion ? undefined : contactItem} id="contact-heading" className="mt-5 text-[clamp(2.25rem,5.3vw,4.8rem)] font-semibold leading-[1] tracking-[-0.05em] text-slate-50">
                 Let&apos;s build something reliable.
-              </h2>
-              <p className="mt-6 max-w-[62ch] text-base leading-7 text-slate-400">
+              </motion.h2>
+              <motion.p variants={shouldReduceMotion ? undefined : contactItem} className="mt-6 max-w-[62ch] text-base leading-7 text-slate-400">
                 Saya terbuka untuk kesempatan di System Administration, IT Infrastructure, dan Cybersecurity—termasuk internship maupun peran junior.
-              </p>
+              </motion.p>
             </div>
 
-            <a
+            <motion.a
+              variants={shouldReduceMotion ? undefined : contactItem}
               href={profile.links.email}
-              className="group focus-ring inline-flex min-h-12 w-fit items-center gap-3 rounded-xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-[#061015] transition hover:-translate-y-0.5 hover:bg-cyan-200"
+              whileHover={shouldReduceMotion ? undefined : { y: -3, scale: 1.015 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.985 }}
+              transition={{ duration: 0.22, ease: premiumEase }}
+              className="group focus-ring inline-flex min-h-12 w-fit items-center gap-3 rounded-xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-[#061015] transition-colors hover:bg-cyan-200"
             >
               Contact Me
               <FaArrowRight className="transition-transform group-hover:translate-x-1" size={13} aria-hidden="true" />
-            </a>
+            </motion.a>
           </div>
         </motion.section>
 

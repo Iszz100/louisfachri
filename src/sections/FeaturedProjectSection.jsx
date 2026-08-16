@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { FaArrowRight, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { Link } from 'react-router'
+import Reveal from '../components/common/Reveal'
 import SectionHeading from '../components/common/SectionHeading'
 import { projects } from '../data/projects'
 import { sectionReveal, staggerContainer } from '../utils/motion'
@@ -60,11 +61,11 @@ function ProjectLinks({ project, compact = false }) {
           href={project.repositoryUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg px-2 text-xs font-medium text-slate-400 transition hover:text-slate-200"
+          className="group/external focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg px-2 text-xs font-medium text-slate-400 transition hover:text-slate-200"
           aria-label={`Buka repository ${project.title}`}
         >
           GitHub
-          <FaArrowUpRightFromSquare size={10} aria-hidden="true" />
+          <FaArrowUpRightFromSquare className="transition-transform group-hover/external:translate-x-1 group-hover/external:-translate-y-1" size={10} aria-hidden="true" />
         </a>
       ) : null}
     </div>
@@ -93,13 +94,7 @@ export default function FeaturedProjectSection() {
   return (
     <section className="section-padding border-y border-white/[0.07] bg-white/[0.015]" aria-labelledby="featured-project-heading">
       <div className="container-shell">
-        <motion.div
-          variants={sectionReveal}
-          initial={shouldReduceMotion ? false : 'hidden'}
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="flex flex-col justify-between gap-5 md:flex-row md:items-end"
-        >
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <SectionHeading
             eyebrow="Selected work"
             title="Dibangun, diuji, lalu didokumentasikan."
@@ -113,13 +108,11 @@ export default function FeaturedProjectSection() {
             Semua Proyek
             <FaArrowRight className="transition-transform group-hover:translate-x-1" size={12} aria-hidden="true" />
           </Link>
-        </motion.div>
+        </div>
 
-        <motion.article
-          variants={sectionReveal}
-          initial={shouldReduceMotion ? false : 'hidden'}
-          whileInView="show"
-          viewport={{ once: true, amount: 0.14 }}
+        <Reveal
+          as="article"
+          amount={0.14}
           className="polish-card overflow-hidden rounded-[1.35rem] border border-white/[0.09] bg-[#0b1119] shadow-[0_26px_80px_rgba(0,0,0,0.3)]"
         >
           <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
@@ -133,7 +126,8 @@ export default function FeaturedProjectSection() {
                   className="h-full w-full object-contain"
                 />
               </div>
-              <span className="absolute left-6 top-6 rounded-full border border-white/10 bg-[#080c12]/90 px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-cyan-200 backdrop-blur sm:left-7 sm:top-7">
+              <span className="project-media-overlay" aria-hidden="true" />
+              <span className="absolute left-6 top-6 z-10 rounded-full border border-white/10 bg-[#080c12]/90 px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-cyan-200 backdrop-blur sm:left-7 sm:top-7">
                 Featured / 01
               </span>
             </div>
@@ -159,7 +153,7 @@ export default function FeaturedProjectSection() {
               <ProjectLinks project={leadProject} />
             </div>
           </div>
-        </motion.article>
+        </Reveal>
 
         <motion.div
           variants={staggerContainer}
@@ -182,7 +176,8 @@ export default function FeaturedProjectSection() {
                   decoding="async"
                   className="h-full w-full rounded-lg object-contain"
                 />
-                <span className="absolute left-5 top-5 rounded-full border border-white/10 bg-[#080c12]/90 px-2.5 py-1 font-mono text-[0.58rem] text-slate-400 backdrop-blur">
+                <span className="project-media-overlay" aria-hidden="true" />
+                <span className="absolute left-5 top-5 z-10 rounded-full border border-white/10 bg-[#080c12]/90 px-2.5 py-1 font-mono text-[0.58rem] text-slate-400 backdrop-blur">
                   0{index + 2}
                 </span>
               </div>

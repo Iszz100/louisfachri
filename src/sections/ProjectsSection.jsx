@@ -159,7 +159,8 @@ function ProjectCard({ headingLevel = 3, isWide, project, shouldReduceMotion }) 
               fetchPriority="low"
               className="h-full w-full object-contain"
             />
-            <span className="absolute right-2.5 top-2.5 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-600/80 bg-slate-950/85 text-slate-200 opacity-90 shadow-lg backdrop-blur transition group-hover/image:border-cyan-300/60 group-hover/image:text-cyan-100">
+            <span className="project-media-overlay" aria-hidden="true" />
+            <span className="absolute right-2.5 top-2.5 z-10 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-600/80 bg-slate-950/85 text-slate-200 opacity-90 shadow-lg backdrop-blur transition group-hover/image:border-cyan-300/60 group-hover/image:text-cyan-100">
               <FaMagnifyingGlassPlus size={13} aria-hidden="true" />
             </span>
           </button>
@@ -336,7 +337,7 @@ function ProjectCard({ headingLevel = 3, isWide, project, shouldReduceMotion }) 
             >
               {project.repositoryLabel ?? 'Lihat Repository'}
               <FaArrowUpRightFromSquare
-                className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1"
                 size={12}
                 aria-hidden="true"
               />
@@ -400,19 +401,12 @@ function ProjectsContent({ hash, showAllByDefault = false, showHeading = true })
     >
       <div className="container-shell">
         {showHeading ? (
-          <motion.div
-            variants={sectionReveal}
-            initial={shouldReduceMotion ? false : 'hidden'}
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <SectionHeading
-              eyebrow="Projects"
-              title="Project & Praktik Saya"
-              description="Pilihan project yang saya kerjakan selama sekolah, pelatihan, kompetisi, dan proses belajar mandiri. Detail teknis dapat dibuka pada setiap project."
-              headingId="projects-heading"
-            />
-          </motion.div>
+          <SectionHeading
+            eyebrow="Projects"
+            title="Project & Praktik Saya"
+            description="Pilihan project yang saya kerjakan selama sekolah, pelatihan, kompetisi, dan proses belajar mandiri. Detail teknis dapat dibuka pada setiap project."
+            headingId="projects-heading"
+          />
         ) : null}
 
         <div className="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">

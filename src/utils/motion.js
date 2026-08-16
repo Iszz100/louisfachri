@@ -1,21 +1,42 @@
-export const sectionReveal = {
-  hidden: { opacity: 0, y: 20 },
+export const premiumEase = [0.22, 1, 0.36, 1]
+
+export const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.52,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.62,
+      ease: premiumEase,
     },
   },
 }
+
+export const fadeIn = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { duration: 0.5, ease: premiumEase },
+  },
+}
+
+export const scaleIn = {
+  hidden: { opacity: 0, scale: 0.96 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.56, ease: premiumEase },
+  },
+}
+
+export const sectionReveal = fadeUp
 
 export const staggerContainer = {
   hidden: {},
   show: {
     transition: {
       delayChildren: 0.04,
-      staggerChildren: 0.08,
+      staggerChildren: 0.09,
     },
   },
 }
@@ -23,9 +44,9 @@ export const staggerContainer = {
 export const cardInteraction = {
   rest: { y: 0, scale: 1 },
   hover: {
-    y: -4,
-    scale: 1,
-    transition: { duration: 0.24, ease: [0.22, 1, 0.36, 1] },
+    y: -6,
+    scale: 1.01,
+    transition: { duration: 0.28, ease: premiumEase },
   },
   tap: { scale: 0.985 },
 }

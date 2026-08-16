@@ -11,19 +11,12 @@ export default function EducationSection() {
   return (
     <section className="section-padding pt-0" aria-labelledby="education-heading">
       <div className="container-shell">
-        <motion.div
-          variants={sectionReveal}
-          initial={shouldReduceMotion ? false : 'hidden'}
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          <SectionHeading
-            eyebrow="Education"
-            title="Pendidikan"
-            description="Pendidikan formal yang mendukung fokus belajar saya di bidang sistem, jaringan, dan cybersecurity."
-            headingId="education-heading"
-          />
-        </motion.div>
+        <SectionHeading
+          eyebrow="Education"
+          title="Pendidikan"
+          description="Pendidikan formal yang mendukung fokus belajar saya di bidang sistem, jaringan, dan cybersecurity."
+          headingId="education-heading"
+        />
 
         <motion.div
           variants={staggerContainer}

@@ -84,6 +84,7 @@ p {
   position: absolute;
   inset: 0;
   z-index: -1;
+  overflow: hidden;
   background:
     radial-gradient(circle at 20% 35%, rgba(34, 211, 238, 0.075), transparent 31rem),
     radial-gradient(circle at 85% 38%, rgba(59, 130, 246, 0.055), transparent 27rem),
@@ -93,7 +94,7 @@ p {
 .hero-backdrop::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -7%;
   opacity: 0.28;
   background-image:
     linear-gradient(rgba(103, 232, 249, 0.055) 1px, transparent 1px),
@@ -101,6 +102,28 @@ p {
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(circle at 75% 45%, black, transparent 45%);
   mask-image: radial-gradient(circle at 75% 45%, black, transparent 45%);
+  animation: heroGridDrift 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.hero-backdrop::after {
+  content: '';
+  position: absolute;
+  right: 2%;
+  top: 8%;
+  width: min(42rem, 58vw);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.07), rgba(59, 130, 246, 0.025) 38%, transparent 68%);
+  opacity: 0.72;
+  animation: heroAuraDrift 18s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.hero-parallax-orb {
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.1), rgba(59, 130, 246, 0.025) 48%, transparent 72%);
+  filter: blur(18px);
+  opacity: 0.58;
 }
 
 .page-hero-glow {
@@ -115,6 +138,20 @@ p {
     radial-gradient(circle at 88% 20%, rgba(34, 211, 238, 0.11), transparent 24rem),
     linear-gradient(125deg, rgba(17, 24, 39, 0.96), rgba(10, 15, 22, 0.96));
   box-shadow: 0 28px 85px rgba(0, 0, 0, 0.3);
+}
+
+.contact-panel::before {
+  content: '';
+  position: absolute;
+  right: -8rem;
+  top: -10rem;
+  z-index: -1;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.15), rgba(59, 130, 246, 0.035) 42%, transparent 70%);
+  animation: contactGlow 12s ease-in-out infinite alternate;
+  will-change: transform, opacity;
 }
 
 .contact-panel::after {
@@ -160,8 +197,29 @@ p {
     box-shadow 260ms ease;
 }
 
+.expertise-card {
+  background-image: radial-gradient(circle at 12% 0%, rgba(34, 211, 238, 0.055), transparent 46%);
+  background-position: 100% 100%;
+  background-size: 150% 150%;
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms ease,
+    background-color 260ms ease,
+    background-position 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms ease;
+}
+
 .media-zoom img {
   transition: transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-media-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.02), transparent 44%, rgba(59, 130, 246, 0.13));
+  opacity: 0.16;
+  transition: opacity 320ms ease;
 }
 
 .status-ping {
@@ -187,15 +245,24 @@ p {
 @media (hover: hover) and (pointer: fine) {
   .polish-card:hover,
   .interactive-card:hover {
-    transform: translate3d(0, -3px, 0);
+    transform: translate3d(0, -6px, 0) scale(1.01);
     border-color: rgba(148, 163, 184, 0.28);
     background-color: rgba(255, 255, 255, 0.035);
-    box-shadow: 0 24px 68px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(34, 211, 238, 0.035);
+  }
+
+  .expertise-card:hover {
+    background-position: 0 0;
   }
 
   .polish-card:hover .media-zoom img,
   .media-zoom:hover img {
-    transform: scale(1.018);
+    transform: scale(1.045);
+  }
+
+  .polish-card:hover .project-media-overlay,
+  .media-zoom:hover .project-media-overlay {
+    opacity: 0.42;
   }
 }
 
@@ -214,6 +281,14 @@ p {
   }
 }
 
+@media (max-width: 767px) {
+  .hero-backdrop::before,
+  .hero-backdrop::after,
+  .contact-panel::before {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -222,6 +297,54 @@ p {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .hero-backdrop::before,
+  .hero-backdrop::after,
+  .contact-panel::before {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .polish-card:hover,
+  .interactive-card:hover,
+  .polish-card:hover .media-zoom img,
+  .media-zoom:hover img {
+    transform: none !important;
+  }
+}
+
+@keyframes heroGridDrift {
+  from {
+    transform: translate3d(-0.8%, -0.6%, 0);
+  }
+
+  to {
+    transform: translate3d(1.1%, 0.9%, 0);
+  }
+}
+
+@keyframes heroAuraDrift {
+  from {
+    opacity: 0.52;
+    transform: translate3d(-10px, -8px, 0) scale(0.96);
+  }
+
+  to {
+    opacity: 0.78;
+    transform: translate3d(16px, 12px, 0) scale(1.04);
+  }
+}
+
+@keyframes contactGlow {
+  from {
+    opacity: 0.55;
+    transform: translate3d(-12px, 4px, 0) scale(0.96);
+  }
+
+  to {
+    opacity: 0.9;
+    transform: translate3d(12px, -8px, 0) scale(1.05);
   }
 }
 

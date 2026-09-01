@@ -97,7 +97,7 @@ export default function FeaturedProjectSection() {
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <SectionHeading
             eyebrow="Proyek pilihan"
-            title="Tiga proyek yang paling banyak mengajarkan saya."
+            title={`${featuredProjects.length} proyek yang paling banyak mengajarkan saya.`}
             description="Di sini saya ceritakan masalahnya, bagian yang saya kerjakan, dan hal yang saya pelajari selama prosesnya."
             headingId="featured-project-heading"
           />

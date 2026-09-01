@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
+import { SITE_URL } from '../src/config/site.js'
 
 const outputDirectory = resolve('dist')
 const indexPath = resolve(outputDirectory, 'index.html')
@@ -12,7 +13,7 @@ const pages = [
     description:
       'Project dan hands-on lab Louis Fachri di bidang System Administration, IT Infrastructure, dan Cybersecurity.',
     robots: 'index, follow',
-    canonical: 'https://louisfachri.my.id/projects',
+    canonical: `${SITE_URL}/projects`,
   },
   {
     output: 'sertifikasi.html',
@@ -20,7 +21,7 @@ const pages = [
     description:
       'Daftar sertifikasi, pelatihan, dan pencapaian Louis Fachri di bidang cybersecurity, system administration, networking, dan teknologi.',
     robots: 'index, follow',
-    canonical: 'https://louisfachri.my.id/sertifikasi',
+    canonical: `${SITE_URL}/sertifikasi`,
   },
   {
     output: '404.html',

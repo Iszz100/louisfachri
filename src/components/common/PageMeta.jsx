@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
+import { SITE_URL, SOCIAL_IMAGE } from '../../config/site'
 
-const SITE_URL = 'https://louisfachri.my.id'
-const SOCIAL_IMAGE = `${SITE_URL}/social-preview.png`
 const SOCIAL_IMAGE_ALT = 'Portfolio Louis Fachri — System Administrator dan Cybersecurity'
 
 function upsertMeta(attribute, key, content) {
@@ -43,7 +42,7 @@ export default function PageMeta({
 }) {
   useEffect(() => {
     const canonical = canonicalPath ? `${SITE_URL}${canonicalPath}` : null
-    const pageUrl = canonical ?? `${SITE_URL}${window.location.pathname}`
+    const pageUrl = canonical ?? window.location.href.split(/[?#]/)[0]
 
     document.title = title
     upsertMeta('name', 'description', description)

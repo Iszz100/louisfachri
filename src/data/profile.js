@@ -2,19 +2,19 @@ export const profile = {
   name: 'Louis Fachri Putra Jatmiko',
   displayName: 'Louis Fachri',
   role: 'Junior System Administrator & Cybersecurity Enthusiast',
-  status: 'Open to internship & junior opportunities',
+  status: 'Terbuka untuk internship & posisi junior',
   manifesto:
-    'Saya belajar lewat praktik langsung: menyiapkan lab, membaca log, menguji konfigurasi, dan melakukan troubleshooting ketika menemukan masalah.',
+    'Saya paling cepat paham kalau langsung mencoba. Biasanya saya mulai dari menyiapkan lab, membaca log, lalu membongkar konfigurasi satu per satu sampai ketemu sumber masalahnya.',
   shortPitch:
-    'Membangun sistem yang andal, mengamankan infrastruktur, dan mendokumentasikan pembelajaran melalui praktik langsung.',
+    'Saya suka ngulik server Linux, jaringan, dan keamanan. Sebagian besar isi portofolio ini datang dari proyek sekolah, lab pribadi, dan pengalaman PKL.',
   location: 'Sidoarjo, Jawa Timur',
   currentFocus: ['Wazuh', 'OPNsense', 'Linux', 'Docker', 'Networking'],
   card: {
     handle: 'LOUIS.FACHRI',
-    status: 'Learning & Building',
+    status: 'Masih belajar & terus mencoba',
     focus: 'Blue Team / System Administration',
     location: 'Sidoarjo, Indonesia',
-    currently: 'Cybersecurity Internship',
+    currently: 'PKL Cybersecurity',
   },
   links: {
     github: 'https://github.com/Iszz100',

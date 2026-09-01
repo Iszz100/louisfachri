@@ -73,16 +73,15 @@ export default function CertificationsPage() {
               animate="show"
               className="max-w-4xl space-y-5"
             >
-              <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">Halaman Sertifikasi</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">Sertifikat & pencapaian</p>
               <h1
                 id="certifications-heading"
                 className="text-[clamp(2rem,5vw,3.8rem)] font-semibold leading-tight text-slate-100"
               >
-                Dokumentasi Sertifikat dan Pencapaian
+                Sertifikasi dan pencapaian saya.
               </h1>
               <p className="text-body leading-relaxed text-slate-300">
-                Kumpulan sertifikasi, pelatihan, dan pencapaian yang mendukung proses belajar saya di bidang cybersecurity,
-                system administration, networking, dan teknologi.
+                Di sini saya menyimpan sertifikat dari kelas, workshop, dan kompetisi yang pernah saya ikuti—terutama yang berkaitan dengan cybersecurity, system administration, dan networking.
               </p>
             </motion.div>
           </div>

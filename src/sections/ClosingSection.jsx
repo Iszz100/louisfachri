@@ -47,12 +47,12 @@ export default function ClosingSection() {
         >
           <div className="relative z-10 grid gap-9 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
-              <motion.p variants={shouldReduceMotion ? undefined : contactItem} className="technical-label text-cyan-300">Have a role or project in mind?</motion.p>
+              <motion.p variants={shouldReduceMotion ? undefined : contactItem} className="technical-label text-cyan-300">Kalau ada kesempatan yang cocok</motion.p>
               <motion.h2 variants={shouldReduceMotion ? undefined : contactItem} id="contact-heading" className="mt-5 text-[clamp(2.25rem,5.3vw,4.8rem)] font-semibold leading-[1] tracking-[-0.05em] text-slate-50">
-                Let&apos;s build something reliable.
+                Saya senang kalau kita bisa ngobrol.
               </motion.h2>
               <motion.p variants={shouldReduceMotion ? undefined : contactItem} className="mt-6 max-w-[62ch] text-base leading-7 text-slate-400">
-                Saya terbuka untuk kesempatan di System Administration, IT Infrastructure, dan Cybersecurity—termasuk internship maupun peran junior.
+                Saya sedang mencari kesempatan untuk belajar lebih jauh di System Administration, IT Infrastructure, atau Cybersecurity, baik lewat internship maupun posisi junior.
               </motion.p>
             </div>
 
@@ -62,9 +62,9 @@ export default function ClosingSection() {
               whileHover={shouldReduceMotion ? undefined : { y: -3, scale: 1.015 }}
               whileTap={shouldReduceMotion ? undefined : { scale: 0.985 }}
               transition={{ duration: 0.22, ease: premiumEase }}
-              className="group focus-ring inline-flex min-h-12 w-fit items-center gap-3 rounded-xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-[#061015] transition-colors hover:bg-cyan-200"
+              className="motion-sheen group focus-ring inline-flex min-h-12 w-fit items-center gap-3 rounded-xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-[#061015] transition-colors hover:bg-cyan-200"
             >
-              Contact Me
+              Kirim Email
               <FaArrowRight className="transition-transform group-hover:translate-x-1" size={13} aria-hidden="true" />
             </motion.a>
           </div>
@@ -93,7 +93,7 @@ export default function ClosingSection() {
 
         <div className="flex flex-col justify-between gap-2 pt-5 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-slate-400 sm:flex-row sm:items-center">
           <p>© {currentYear} Louis Fachri.</p>
-          <p>Built with clarity, curiosity, and care.</p>
+          <p>Dibuat sambil terus belajar dan ngulik.</p>
         </div>
       </div>
     </footer>

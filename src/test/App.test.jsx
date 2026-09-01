@@ -27,7 +27,7 @@ describe('routing and page metadata', () => {
   it('renders the certifications page on a direct route with unique metadata', async () => {
     renderApp('/sertifikasi')
 
-    expect(await screen.findByRole('heading', { level: 1, name: 'Dokumentasi Sertifikat dan Pencapaian' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Sertifikasi dan pencapaian saya.' })).toBeInTheDocument()
     await waitFor(() => expect(document.title).toBe('Sertifikasi | Louis Fachri'))
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
@@ -40,7 +40,7 @@ describe('routing and page metadata', () => {
 
     expect(await screen.findByRole('heading', {
       level: 1,
-      name: 'Praktik nyata, bukan sekadar daftar teknologi.',
+      name: 'Tempat saya menyimpan proyek dan catatan lab.',
     })).toBeInTheDocument()
     expect(screen.getAllByRole('article')).toHaveLength(projects.length)
     await waitFor(() => expect(document.title).toBe('Projects | Louis Fachri'))
@@ -57,7 +57,7 @@ describe('routing and page metadata', () => {
     const certificationLinks = await screen.findAllByRole('link', { name: 'Sertifikasi' })
     await user.click(certificationLinks[0])
 
-    expect(await screen.findByRole('heading', { level: 1, name: 'Dokumentasi Sertifikat dan Pencapaian' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Sertifikasi dan pencapaian saya.' })).toBeInTheDocument()
     await waitFor(() => expect(document.title).toBe('Sertifikasi | Louis Fachri'))
   })
 
@@ -166,7 +166,7 @@ describe('project showcase', () => {
     expect(screen.getAllByRole('article')).toHaveLength(4)
     expect(screen.getByText('4 dari 6 proyek ditampilkan')).toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: 'Lihat Semua Project' }))
+    await user.click(screen.getByRole('button', { name: 'Lihat Semua Proyek' }))
     expect(screen.getAllByRole('article')).toHaveLength(6)
     expect(screen.getByText('6 proyek ditampilkan')).toBeInTheDocument()
 
@@ -186,7 +186,7 @@ describe('project showcase', () => {
 
     expect(screen.getAllByRole('article')).toHaveLength(3)
     expect(screen.getByText('3 proyek ditampilkan')).toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: 'Lihat Semua Project' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Lihat Semua Proyek' })).not.toBeInTheDocument()
   })
 
   it('shows the OPNsense lab in the Cybersecurity filter', async () => {

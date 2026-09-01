@@ -17,9 +17,9 @@ export default function CapabilitiesSection() {
     <section className="section-padding" aria-labelledby="capabilities-heading">
       <div className="container-shell">
         <SectionHeading
-          eyebrow="Core expertise"
-          title="Tiga area yang saya bangun dengan serius."
-          description="Fondasi teknis yang saya kembangkan lewat project sekolah, lab mandiri, dan pengalaman PKL."
+          eyebrow="Yang saya pelajari"
+          title="Hal yang paling sering saya kerjakan."
+          description="Saya masih terus belajar, dan tiga area ini yang paling sering muncul di proyek sekolah, lab pribadi, dan kegiatan PKL saya."
           headingId="capabilities-heading"
         />
 

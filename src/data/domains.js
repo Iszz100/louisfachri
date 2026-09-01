@@ -4,7 +4,7 @@ export const domains = [
     number: '01',
     title: 'System Administration',
     context:
-      'Menyiapkan layanan Linux, mengelola container, dan menelusuri gangguan melalui log serta status sistem.',
+      'Mulai dari menyiapkan server Linux dan service, menjalankan aplikasi dengan Docker, sampai mencari penyebab error lewat log.',
     stack: ['Linux', 'Docker', 'Systemd'],
   },
   {
@@ -12,7 +12,7 @@ export const domains = [
     number: '02',
     title: 'Cybersecurity',
     context:
-      'Mempelajari defensive security melalui monitoring, analisis log, firewall, dan pengujian IDS/IPS di lingkungan lab.',
+      'Di lab, saya belajar blue team dengan memantau event di Wazuh, mengatur firewall OPNsense, dan mencoba Suricata IDS/IPS.',
     stack: ['Wazuh', 'OPNsense', 'Suricata'],
   },
   {
@@ -20,7 +20,7 @@ export const domains = [
     number: '03',
     title: 'IT Infrastructure',
     context:
-      'Menghubungkan deployment, networking, troubleshooting, dan dokumentasi agar layanan lebih mudah dioperasikan.',
+      'Saya juga mengerjakan bagian yang menghubungkan aplikasi dengan server: networking, reverse proxy Nginx, deployment, dan pengecekan setelah rilis.',
     stack: ['Networking', 'Nginx', 'Deployment'],
   },
 ]

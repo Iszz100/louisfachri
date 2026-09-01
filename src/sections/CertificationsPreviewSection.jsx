@@ -19,9 +19,9 @@ export default function CertificationsPreviewSection() {
       <div className="container-shell">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <SectionHeading
-            eyebrow="Credentials"
-            title="Pencapaian yang menguatkan proses belajar."
-            description="Beberapa kompetisi dan pelatihan yang paling relevan dengan fokus saya di cybersecurity."
+            eyebrow="Sertifikasi"
+            title="Sertifikasi dan pencapaian saya."
+            description="Kumpulan sertifikat dari pelatihan, workshop, dan kompetisi yang pernah saya ikuti, terutama di bidang cybersecurity dan networking."
             headingId="certification-preview-heading"
           />
           <Reveal distance={12} delay={0.16} className="mb-8">

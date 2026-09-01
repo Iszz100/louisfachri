@@ -206,14 +206,14 @@ export const projects = [
     category: 'Cybersecurity',
     focus: 'Network Security / Blue Team',
     cardDescription:
-      'Praktik konfigurasi OPNsense sebagai filtering bridge pada lab jaringan, dilanjutkan dengan firewall, Suricata IDS/IPS, ruleset keamanan, dan validasi menggunakan EICAR safe test.',
+      'Saya membuat lab OPNsense untuk mencoba filtering bridge, firewall, dan Suricata IDS/IPS. Konfigurasinya kemudian saya cek dengan EICAR safe test.',
     problemLabel: 'Latar Belakang',
     problem:
-      'Pada project ini saya mempelajari penerapan OPNsense dalam sebuah lab keamanan jaringan. OPNsense dikonfigurasi sebagai bagian dari jalur trafik agar saya dapat mempelajari bridge interface, firewall, akses management, serta IDS/IPS menggunakan Suricata.',
+      'Saya ingin memahami apa yang terjadi ketika OPNsense ditempatkan langsung di jalur trafik. Dari situ saya bisa melihat cara kerja bridge interface, firewall, akses management, dan IDS/IPS menggunakan Suricata.',
     solution:
-      'Saya menyusun topologi lab, melakukan assignment dan bridge interface OPNsense, mengatur jalur management serta firewall, lalu menyesuaikan routing dan NAT pada MikroTik. Setelah itu saya mengaktifkan Suricata dalam mode IPS, memilih ruleset yang relevan, membuat policy Alert menjadi Drop, dan melakukan validasi aman menggunakan EICAR test file.',
+      'Saya mulai dari menggambar topologi, melakukan assignment dan bridge interface OPNsense, lalu mengatur jalur management, firewall, routing, dan NAT pada MikroTik. Setelah trafik berjalan, saya mengaktifkan Suricata dalam mode IPS, memilih ruleset, mengubah policy Alert menjadi Drop, dan mengujinya secara aman dengan EICAR test file.',
     impact:
-      'Saya memahami hubungan antara interface bridge, jalur management, firewall, routing dan NAT MikroTik, serta proses konfigurasi Suricata dari aktivasi ruleset sampai policy IPS.',
+      'Dari lab ini saya mulai paham hubungan antara bridge, jalur management, firewall, routing/NAT MikroTik, dan cara ruleset Suricata dipakai dalam mode IPS.',
     learningOutcomes: [
       'Memahami cara kerja interface bridge pada OPNsense',
       'Memahami pemisahan jalur management dan trafik',
@@ -224,7 +224,7 @@ export const projects = [
       'Memahami pentingnya validasi dengan metode pengujian yang aman',
     ],
     documentedOutput:
-      'Dari praktik ini saya memahami alur konfigurasi OPNsense mulai dari interface dan bridge, pengaturan firewall, sampai penerapan Suricata dalam mode IPS. Saya juga melakukan validasi menggunakan EICAR safe test untuk mengamati perilaku filtering dan rule yang telah dikonfigurasi.',
+      'Saya mendokumentasikan alur konfigurasi dari interface dan bridge, pengaturan firewall, sampai aktivasi Suricata IPS. Bagian akhirnya berisi hasil pengecekan filtering menggunakan EICAR safe test.',
     outputLabel: 'Hasil Praktik',
     techStack: [
       'OPNsense',
@@ -242,7 +242,7 @@ export const projects = [
     environment: ['OPNsense', 'MikroTik RouterOS', 'Suricata IDS/IPS', 'Linux Client', 'Network Lab'],
     focusAreas: ['Transparent Bridge', 'Firewall', 'Routing / NAT', 'IDS / IPS', 'Security Validation'],
     engineeringNotes:
-      'Project ini merupakan hands-on security lab selama proses belajar dan PKL, bukan implementasi enterprise production. Pengujian menggunakan EICAR antivirus test file yang aman dan memang ditujukan untuk validasi mekanisme keamanan; dokumentasi ini tidak digunakan untuk mengklaim tingkat pemblokiran tertentu.',
+      'Ini adalah security lab untuk belajar selama PKL, bukan sistem production. Saya memakai EICAR antivirus test file karena memang dibuat untuk pengujian keamanan yang aman, dan hasilnya tidak saya jadikan klaim tingkat pemblokiran tertentu.',
     engineeringNotesLabel: 'Catatan pengujian aman',
     detailListLabel: 'Langkah praktik',
     architecturalDecisions: [
@@ -264,16 +264,16 @@ export const projects = [
     title: 'Website Chatbot UKS & Perpustakaan (Flask) - Deployment & Operasional Service',
     category: 'System Administrator',
     problem:
-      'Tujuan belajar saya adalah membuat website chatbot UKS dan Perpustakaan bisa berjalan stabil di server dan siap dipakai pengguna.',
+      'Aplikasi chatbot UKS dan Perpustakaan sudah dibuat oleh tim. Bagian yang saya pelajari adalah bagaimana membuatnya berjalan sebagai layanan yang rapi di server.',
     solution:
-      'Saya setup environment Linux, menyiapkan aplikasi Flask sebagai service, mengatur reverse proxy Nginx, lalu melakukan pengujian endpoint UKS dan Perpustakaan untuk memeriksa respons layanan.',
+      'Saya menyiapkan environment Linux, menjalankan Flask sebagai service, memasang Nginx sebagai reverse proxy, lalu mengecek endpoint UKS dan Perpustakaan satu per satu.',
     impact:
-      'Saya belajar alur end-to-end dari deployment, konfigurasi service, sampai troubleshooting berbasis log untuk menjaga layanan tetap online.',
-    documentedOutput: 'Deployment layanan chatbot dengan dua area layanan yang terdokumentasi: UKS dan Perpustakaan.',
+      'Dari sini saya mulai paham bahwa deployment bukan cuma menjalankan aplikasi, tetapi juga memastikan service, proxy, dan log mudah diperiksa saat ada masalah.',
+    documentedOutput: 'Saya mendokumentasikan deployment serta pengecekan dua area layanan: UKS dan Perpustakaan.',
     techStack: ['Linux', 'Python', 'Flask', 'Nginx', 'Systemd', 'OpenSSH'],
     role: 'Pembelajar Junior System Administrator',
     engineeringNotes:
-      'Kontribusi saya berfokus pada kesiapan environment Linux, pengelolaan service, reverse proxy, dan pengecekan operasional setelah deployment.',
+      'Ini proyek tim. Bagian saya berada di sisi environment Linux, service, reverse proxy, dan pengecekan setelah deployment.',
     architecturalDecisions: [
       'Pisahkan proses aplikasi Flask dan web server Nginx agar mudah dikelola',
       'Gunakan systemd supaya service bisa auto-restart saat error',
@@ -289,16 +289,16 @@ export const projects = [
     title: 'School Website Redesign (JHIC) - System Administrator Operations',
     category: 'System Administrator',
     problem:
-      'Tujuan belajar saya adalah memastikan hasil redesign website sekolah dari lomba JHIC bisa di-deploy dengan rapi, stabil, dan siap dipakai pada banyak halaman utama.',
+      'Saat lomba JHIC, tim kami mengerjakan redesign website sekolah. Saya bertanggung jawab memastikan hasilnya bisa dijalankan dan dicek dengan baik di server.',
     solution:
-      'Di tim, saya pegang fokus System Administrator: setup Linux server, konfigurasi environment deploy, penyesuaian service web, validasi rilis lintas halaman (Beranda, Profil Sekolah, Hubungan Industri, DTP, Ekstrakurikuler, Profil Jurusan), dan troubleshooting saat ditemukan kendala operasional.',
+      'Saya fokus di bagian System Administrator: menyiapkan Linux server dan environment deployment, menyesuaikan service web, lalu memeriksa enam halaman utama setelah rilis. Kalau ada kendala operasional, saya ikut menelusuri penyebabnya.',
     impact:
-      'Saya belajar menyusun proses rilis dari pengecekan kesiapan server, deployment, sampai verifikasi operasional setelah website dijalankan.',
-    documentedOutput: 'Enam halaman utama masuk dalam cakupan verifikasi deployment tim.',
+      'Proyek ini mengajarkan saya pentingnya checklist sebelum rilis dan pengecekan ulang setelah deployment, terutama saat banyak halaman dikerjakan bersama dalam satu tim.',
+    documentedOutput: 'Saya mencatat hasil verifikasi deployment pada enam halaman utama website.',
     techStack: ['Linux Server', 'Deployment & Server Configuration', 'React.js', 'Laravel', 'REST API', 'Git & GitHub'],
     role: 'System Administrator (Fokus Utama dalam Tim)',
     engineeringNotes:
-      'Proyek dikerjakan dalam tim; kontribusi saya difokuskan pada setup server, proses deployment, dan verifikasi operasional halaman.',
+      'Proyek ini dikerjakan dalam tim. Kontribusi saya difokuskan pada setup server, deployment, dan pengecekan operasional halaman.',
     architecturalDecisions: [
       'Gunakan checklist pre-release untuk memastikan konfigurasi server dan dependency siap sebelum deploy',
       'Lakukan verifikasi halaman prioritas setelah rilis untuk menekan potensi bug yang lolos',
@@ -314,16 +314,16 @@ export const projects = [
     title: 'Website Swara Jatim - Deployment Ubuntu Server & Docker',
     category: 'System Administrator',
     problem:
-      'Tujuan belajar saya adalah menyiapkan hasil pengembangan website Swara Jatim agar bisa di-deploy dengan stabil di server Ubuntu dan tetap mudah dikelola saat update fitur.',
+      'Website Swara Jatim perlu dijalankan di Ubuntu Server dengan setup yang konsisten dan tetap mudah dicek ketika tim melakukan update.',
     solution:
-      'Saya berperan di sisi deployment: menyiapkan environment Ubuntu Server, membungkus service web dengan Docker, menjalankan container untuk aplikasi, dan melakukan validasi akses halaman utama seperti Home, Galeri, Swara Jatim AI, dan Mini Game.',
+      'Saya menangani sisi deployment: menyiapkan Ubuntu Server, menjalankan service web di dalam Docker, lalu mengecek Home, Galeri, Swara Jatim AI, dan Mini Game setelah container aktif.',
     impact:
-      'Saya belajar alur operasional deployment yang lebih rapi: dari setup server, build container, proses rilis, sampai pengecekan hasil publish agar website tetap konsisten dan siap dipakai user.',
-    documentedOutput: 'Deployment mendokumentasikan Ubuntu Server, container Docker, dan verifikasi empat area halaman.',
+      'Lewat proyek ini saya lebih terbiasa memisahkan tahap setup server, build container, rilis, dan pengecekan supaya masalah lebih mudah dilacak.',
+    documentedOutput: 'Saya mendokumentasikan setup Ubuntu Server, container Docker, dan hasil pengecekan empat bagian website.',
     techStack: ['Ubuntu Server', 'Docker', 'Linux Administration', 'Web Deployment', 'Service Validation', 'Troubleshooting'],
     role: 'System Administrator - Deployment (Ubuntu & Docker)',
     engineeringNotes:
-      'Kontribusi saya berfokus pada kesiapan Ubuntu Server, container Docker, dan pengecekan layanan setelah proses rilis.',
+      'Ini proyek tim. Fokus saya adalah kesiapan Ubuntu Server, container Docker, dan pengecekan layanan setelah rilis.',
     architecturalDecisions: [
       'Gunakan Docker untuk standarisasi environment deploy agar lebih konsisten antar proses rilis',
       'Lakukan pengecekan lintas halaman setelah deploy untuk memastikan semua endpoint frontend bisa diakses',
@@ -337,12 +337,12 @@ export const projects = [
     title: 'Proyek DigiUp Cybersecurity - Defense Against Slow HTTP DDoS Attack',
     category: 'Cybersecurity',
     problem:
-      'Tujuan belajar saya adalah menguji dan meningkatkan ketahanan web service Flask terhadap simulasi serangan Slow HTTP DDoS di lingkungan server Linux.',
+      'Saya ingin melihat bagaimana web service Flask bereaksi saat menerima simulasi Slow HTTP di server Linux milik proyek sendiri.',
     solution:
-      'Saya melakukan simulasi Slow HTTP menggunakan slowhttptest, memonitor performa server saat pengujian berlangsung, kemudian memperbaiki konfigurasi aplikasi menggunakan Gunicorn, Flask non-debug, serta restart policy pada Docker Compose.',
+      'Saya menjalankan slowhttptest di lingkungan lab sambil memantau resource server. Setelah melihat hasilnya, saya mengganti server aplikasi ke Gunicorn, mematikan mode debug Flask, dan menambahkan restart policy di Docker Compose.',
     impact:
-      'Saya belajar membandingkan perilaku layanan sebelum dan sesudah perubahan konfigurasi, dari layer aplikasi sampai container.',
-    documentedOutput: 'Dokumentasi pengujian mencakup kondisi 502, monitoring resource, konfigurasi Gunicorn, slowhttptest, dan restart policy Docker Compose.',
+      'Bagian paling berguna dari latihan ini adalah membandingkan kondisi layanan sebelum dan sesudah konfigurasi diubah, bukan sekadar menjalankan tool pengujian.',
+    documentedOutput: 'Catatan pengujian mencakup error 502, penggunaan resource, konfigurasi Gunicorn, slowhttptest, dan restart policy Docker Compose.',
     techStack: [
       'Cybersecurity',
       'Security Testing Lab',
@@ -355,7 +355,7 @@ export const projects = [
     ],
     role: 'Pembelajar Cybersecurity',
     engineeringNotes:
-      'Pengujian dilakukan pada lingkungan lab proyek sendiri untuk mempelajari respons layanan dan hardening dasar, bukan pada sistem pihak lain.',
+      'Semua pengujian dilakukan di lingkungan lab milik proyek sendiri untuk belajar respons layanan dan hardening dasar, bukan pada sistem pihak lain.',
     architecturalDecisions: [
       'Gunakan Gunicorn sebagai WSGI server agar handling koneksi lebih stabil dibanding mode development',
       'Nonaktifkan mode debug Flask dan rapikan konfigurasi runtime agar lebih aman',
@@ -369,12 +369,12 @@ export const projects = [
     title: 'Smart Home IoT + AI - Dashboard Monitoring dan Kontrol (Flask)',
     category: 'Lainnya',
     problem:
-      'Tujuan belajar saya adalah membuat sistem Smart Home yang lebih praktis, efisien, dan terkontrol, supaya perangkat rumah bisa dipantau dan dikendalikan tanpa proses manual penuh.',
+      'Di proyek tim ini, kami ingin membuat perangkat smart home bisa dipantau dan dikendalikan dari satu dashboard sederhana.',
     solution:
-      'Saya berperan di bagian pengembangan web dashboard menggunakan Flask untuk tampilan data IoT secara real-time. Dashboard ini menampilkan status sensor LDR, sensor gas MQ-135, aktuator servo, buzzer alarm, dan integrasi ESP32-CAM untuk face recognition sebagai verifikasi akses pintu.',
+      'Bagian saya adalah membuat dashboard Flask yang menampilkan data IoT secara real-time. Di sana pengguna bisa melihat status sensor LDR dan MQ-135, servo, buzzer, serta hasil integrasi ESP32-CAM untuk verifikasi akses pintu.',
     impact:
-      'Dari proyek ini saya belajar merancang alur sistem end-to-end: membaca data perangkat, menampilkan status ke dashboard, memberi respons terhadap kondisi tertentu, dan memastikan antarmuka mudah dipakai pengguna.',
-    documentedOutput: 'Dashboard mendokumentasikan sensor gas, sensor cahaya, aktuator ventilasi dan pintu, serta integrasi ESP32-CAM.',
+      'Dari proyek ini saya belajar menghubungkan data perangkat dengan tampilan web dan membuat status sistem cukup jelas untuk dipahami pengguna.',
+    documentedOutput: 'Saya mendokumentasikan tampilan sensor gas dan cahaya, aktuator ventilasi dan pintu, serta integrasi ESP32-CAM.',
     techStack: [
       'Flask',
       'Python',
@@ -388,7 +388,7 @@ export const projects = [
     ],
     role: 'Pengembang Dashboard Flask dalam Tim IoT',
     engineeringNotes:
-      'Proyek dikerjakan dalam tim; kontribusi saya berada pada dashboard Flask untuk menampilkan status perangkat dan mendukung alur pengujian.',
+      'Proyek ini dikerjakan dalam tim. Kontribusi saya berada pada dashboard Flask dan alur pengecekan data perangkat.',
     architecturalDecisions: [
       'Pisahkan layer pembacaan sensor dan layer tampilan dashboard agar debugging lebih cepat',
       'Gunakan endpoint Flask terstruktur untuk update status perangkat secara konsisten',

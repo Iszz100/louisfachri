@@ -19,16 +19,16 @@ export default function ProjectsPage() {
             <motion.div variants={sectionReveal} initial={false} animate="show" className="max-w-[860px]">
               <p className="flex items-center gap-3 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-cyan-300">
                 <span className="h-px w-7 bg-cyan-300/55" aria-hidden="true" />
-                Project archive
+                Arsip proyek
               </p>
               <h1
                 id="projects-page-heading"
                 className="mt-5 text-[clamp(2.7rem,6vw,5.7rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-slate-50"
               >
-                Praktik nyata, bukan sekadar daftar teknologi.
+                Tempat saya menyimpan proyek dan catatan lab.
               </h1>
               <p className="mt-6 max-w-[66ch] text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">
-                Kumpulan {projects.length} project dan lab yang mendokumentasikan masalah, kontribusi saya, keputusan teknis, serta hasil pembelajaran.
+                Ada {projects.length} proyek di sini. Masing-masing berisi cerita singkat tentang masalah yang saya temui, bagian yang saya kerjakan, dan hal yang saya pelajari.
               </p>
             </motion.div>
           </div>

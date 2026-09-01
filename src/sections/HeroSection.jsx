@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
 import { FaArrowRight, FaDownload, FaEnvelope } from 'react-icons/fa6'
 import cvFile from '../assets/CV Louis Fachri Putra Jatmiko.pdf'
 import profilePhoto from '../assets/foto_profil.webp'
@@ -37,6 +37,8 @@ const nameWord = {
   },
 }
 
+const heroTechnologies = [...profile.currentFocus, 'Suricata', 'MikroTik', 'Nginx']
+
 export default function HeroSection() {
   const heroRef = useRef(null)
   const { isMobile, prefersReducedMotion: shouldReduceMotion } = useResponsiveMotion()
@@ -46,8 +48,28 @@ export default function HeroSection() {
   })
   const portraitY = useTransform(scrollYProgress, [0, 1], [0, -22])
   const ambientY = useTransform(scrollYProgress, [0, 1], [0, 28])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -34])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.68, 1], [1, 1, 0.62])
   const parallaxEnabled = !isMobile && !shouldReduceMotion
   const initial = shouldReduceMotion ? false : 'hidden'
+  const pointerX = useMotionValue(0)
+  const pointerY = useMotionValue(0)
+  const smoothPointerX = useSpring(pointerX, { damping: 24, mass: 0.35, stiffness: 170 })
+  const smoothPointerY = useSpring(pointerY, { damping: 24, mass: 0.35, stiffness: 170 })
+  const portraitRotateX = useTransform(smoothPointerY, [-0.5, 0.5], [4.2, -4.2])
+  const portraitRotateY = useTransform(smoothPointerX, [-0.5, 0.5], [-4.2, 4.2])
+
+  const handlePortraitPointerMove = (event) => {
+    if (!parallaxEnabled) return
+    const bounds = event.currentTarget.getBoundingClientRect()
+    pointerX.set((event.clientX - bounds.left) / bounds.width - 0.5)
+    pointerY.set((event.clientY - bounds.top) / bounds.height - 0.5)
+  }
+
+  const resetPortraitTilt = () => {
+    pointerX.set(0)
+    pointerY.set(0)
+  }
 
   return (
     <section
@@ -64,7 +86,10 @@ export default function HeroSection() {
       />
       <div className="container-shell relative flex min-h-[calc(100svh-72px)] items-center py-16 sm:py-20 lg:min-h-[760px] lg:py-24">
         <div className="grid w-full items-center gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.72fr)] lg:gap-20">
-          <div className="max-w-[760px]">
+          <motion.div
+            style={parallaxEnabled ? { opacity: contentOpacity, y: contentY } : undefined}
+            className="max-w-[760px]"
+          >
             <motion.div
               variants={entrance}
               custom={0.02}
@@ -88,7 +113,7 @@ export default function HeroSection() {
               animate="show"
               className="mt-8 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-cyan-300"
             >
-              Hello, I&apos;m
+              Halo, saya
             </motion.p>
 
             <motion.h1
@@ -144,9 +169,9 @@ export default function HeroSection() {
                 whileHover={shouldReduceMotion ? undefined : { y: -2, scale: 1.015 }}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.985 }}
                 transition={{ duration: 0.22, ease: premiumEase }}
-                className="group focus-ring inline-flex min-h-12 items-center justify-center gap-2.5 rounded-xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-[#061015] transition-colors duration-200 hover:bg-cyan-200"
+                className="motion-sheen group focus-ring inline-flex min-h-12 items-center justify-center gap-2.5 rounded-xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-[#061015] transition-colors duration-200 hover:bg-cyan-200"
               >
-                View My Work
+                Lihat Proyek
                 <FaArrowRight className="transition-transform group-hover:translate-x-1" size={13} aria-hidden="true" />
               </motion.a>
               <motion.a
@@ -157,7 +182,7 @@ export default function HeroSection() {
                 className="focus-ring inline-flex min-h-12 items-center justify-center gap-2.5 rounded-xl border border-white/15 bg-white/[0.035] px-5 py-3 text-sm font-semibold text-slate-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.06]"
               >
                 <FaEnvelope size={13} aria-hidden="true" />
-                Contact Me
+                Kirim Pesan
               </motion.a>
               <motion.a
                 href={cvFile}
@@ -166,10 +191,10 @@ export default function HeroSection() {
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.985 }}
                 transition={{ duration: 0.22, ease: premiumEase }}
                 className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-medium text-slate-400 transition hover:text-cyan-100"
-                aria-label="Download CV Louis Fachri dalam format PDF"
+                aria-label="Unduh CV Louis Fachri dalam format PDF"
               >
                 <FaDownload size={12} aria-hidden="true" />
-                Download CV
+                Unduh CV
               </motion.a>
             </motion.div>
 
@@ -181,20 +206,40 @@ export default function HeroSection() {
               className="mt-10 grid max-w-xl grid-cols-2 gap-6 border-t border-white/[0.08] pt-5 text-xs sm:flex sm:gap-10"
             >
               <div>
-                <dt className="font-mono uppercase tracking-[0.16em] text-slate-400">Based in</dt>
+                <dt className="font-mono uppercase tracking-[0.16em] text-slate-400">Domisili</dt>
                 <dd className="mt-1.5 text-slate-300">Sidoarjo, Indonesia</dd>
               </div>
               <div>
-                <dt className="font-mono uppercase tracking-[0.16em] text-slate-400">Currently</dt>
-                <dd className="mt-1.5 text-slate-300">Cybersecurity Intern</dd>
+                <dt className="font-mono uppercase tracking-[0.16em] text-slate-400">Sekarang</dt>
+                <dd className="mt-1.5 text-slate-300">Sedang PKL di bidang Cybersecurity</dd>
               </div>
             </motion.dl>
-          </div>
+          </motion.div>
 
           <motion.div
             style={parallaxEnabled ? { y: portraitY } : undefined}
+            onPointerMove={handlePortraitPointerMove}
+            onPointerLeave={resetPortraitTilt}
             className="relative mx-auto w-full max-w-[430px] lg:mx-0 lg:ml-auto"
           >
+            <motion.div
+              aria-hidden="true"
+              className="hero-signal-tag pointer-events-none absolute -right-10 top-20 z-20 hidden xl:flex"
+              animate={parallaxEnabled ? { y: [0, -7, 0], rotate: [0, 1.2, 0] } : undefined}
+              transition={{ duration: 5.8, ease: 'easeInOut', repeat: Infinity }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+              Linux / Docker
+            </motion.div>
+            <motion.div
+              aria-hidden="true"
+              className="hero-signal-tag pointer-events-none absolute -left-10 bottom-24 z-20 hidden xl:flex"
+              animate={parallaxEnabled ? { y: [0, 8, 0], rotate: [0, -1.2, 0] } : undefined}
+              transition={{ duration: 6.6, delay: 0.5, ease: 'easeInOut', repeat: Infinity }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
+              Wazuh / OPNsense
+            </motion.div>
             <motion.figure
               initial={initial}
               animate="show"
@@ -202,15 +247,21 @@ export default function HeroSection() {
                 hidden: { opacity: 0, y: 20, scale: 0.985, filter: 'blur(7px)' },
                 show: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transition: { duration: 0.76, delay: 0.2, ease: premiumEase } },
               }}
+              style={parallaxEnabled ? {
+                rotateX: portraitRotateX,
+                rotateY: portraitRotateY,
+                transformPerspective: 1200,
+                transformStyle: 'preserve-3d',
+              } : undefined}
               className="relative"
             >
               <div className="absolute -inset-5 -z-10 rounded-[2.2rem] bg-cyan-300/[0.035] blur-2xl" aria-hidden="true" />
               <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#0b111a] shadow-[0_28px_80px_rgba(0,0,0,0.38)]">
                 <div className="flex items-center justify-between border-b border-white/[0.08] px-5 py-4">
-                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-slate-400">Portrait / 01</span>
+                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-slate-400">Foto / 01</span>
                   <span className="flex items-center gap-2 text-[0.65rem] font-medium text-slate-300">
                     <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" aria-hidden="true" />
-                    Learning by doing
+                    Belajar sambil praktik
                   </span>
                 </div>
                 <div className="relative m-2.5 overflow-hidden rounded-[1.05rem] bg-slate-100">
@@ -226,11 +277,13 @@ export default function HeroSection() {
                     height="708"
                     className="aspect-[4/5] w-full object-cover object-[50%_18%]"
                   />
+                  <span className="portrait-reticle absolute inset-3 z-[2] rounded-xl" aria-hidden="true" />
+                  <span className="portrait-scan absolute inset-x-0 top-0 z-[3] h-24" aria-hidden="true" />
                   <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#071019]/85 via-[#071019]/20 to-transparent" aria-hidden="true" />
                   <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
                     <div>
-                      <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-cyan-200">Primary focus</p>
-                      <p className="mt-1 text-sm font-semibold text-white">Systems &amp; Defensive Security</p>
+                      <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-cyan-200">Fokus utama</p>
+                      <p className="mt-1 text-sm font-semibold text-white">Sistem &amp; Defensive Security</p>
                     </div>
                     <span className="hidden rounded-full border border-white/20 bg-black/20 px-3 py-1.5 text-[0.62rem] text-white/80 backdrop-blur-sm sm:block">
                       LF / 2026
@@ -240,6 +293,21 @@ export default function HeroSection() {
               </div>
             </motion.figure>
           </motion.div>
+        </div>
+      </div>
+
+      <div className="hero-tech-rail pointer-events-none absolute inset-x-0 bottom-0 z-10 hidden overflow-hidden border-y border-white/[0.06] bg-[#080c12]/72 backdrop-blur-md md:block" aria-hidden="true">
+        <div className="hero-tech-track">
+          {[0, 1].map((group) => (
+            <div key={group} className="hero-tech-group">
+              {heroTechnologies.map((technology, index) => (
+                <span key={`${group}-${technology}`} className="hero-tech-item">
+                  <span className={index % 3 === 0 ? 'bg-cyan-300' : index % 3 === 1 ? 'bg-blue-400' : 'bg-indigo-400'} />
+                  {technology}
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>

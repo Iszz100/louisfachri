@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react'
 import { MotionConfig } from 'framer-motion'
 import { Route, Routes, useLocation } from 'react-router'
+import AmbientPointer from './components/common/AmbientPointer'
 import RouteTransition from './components/common/RouteTransition'
 import ScrollProgress from './components/common/ScrollProgress'
 import Navbar from './components/layout/Navbar'
@@ -25,6 +26,7 @@ function App() {
           Lewati ke konten utama
         </a>
         <div className="site-ambient pointer-events-none fixed inset-0 -z-20" aria-hidden="true" />
+        <AmbientPointer />
 
         <ScrollProgress />
         <Navbar />

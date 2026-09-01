@@ -402,9 +402,9 @@ function ProjectsContent({ hash, showAllByDefault = false, showHeading = true })
       <div className="container-shell">
         {showHeading ? (
           <SectionHeading
-            eyebrow="Projects"
-            title="Project & Praktik Saya"
-            description="Pilihan project yang saya kerjakan selama sekolah, pelatihan, kompetisi, dan proses belajar mandiri. Detail teknis dapat dibuka pada setiap project."
+            eyebrow="Proyek"
+            title="Beberapa hal yang pernah saya kerjakan."
+            description="Isinya campuran proyek sekolah, pelatihan, kompetisi, dan lab yang saya buat untuk belajar. Buka detailnya kalau ingin melihat proses yang saya jalani."
             headingId="projects-heading"
           />
         ) : null}
@@ -467,7 +467,7 @@ function ProjectsContent({ hash, showAllByDefault = false, showHeading = true })
               aria-expanded={isShowingAllProjects}
               className="group focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-600 bg-slate-900/45 px-4 py-2.5 text-sm font-medium text-slate-200 transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/50 hover:text-cyan-100"
             >
-              {isShowingAllProjects ? 'Tampilkan Lebih Sedikit' : 'Lihat Semua Project'}
+              {isShowingAllProjects ? 'Tampilkan Lebih Sedikit' : 'Lihat Semua Proyek'}
               <FaChevronDown
                 className={cn('transition-transform duration-200 group-hover:translate-y-0.5', isShowingAllProjects && 'rotate-180')}
                 size={12}

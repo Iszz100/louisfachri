@@ -11,22 +11,22 @@ const featuredContent = [
     id: 'opnsense-transparent-bridge-ids-ips',
     title: 'OPNsense Transparent Bridge & IDS/IPS',
     label: 'Network Security Lab',
-    problem: 'Mempelajari bagaimana trafik jaringan dapat difilter dan dipantau tanpa mengubah topologi utama lab.',
-    contribution: 'Menyusun bridge, firewall, routing/NAT, Suricata IPS, lalu memvalidasi rule dengan EICAR safe test.',
+    problem: 'Saya ingin tahu bagaimana OPNsense bisa memfilter dan memantau trafik tanpa mengubah topologi utama lab.',
+    contribution: 'Saya menyiapkan bridge, firewall, routing/NAT, dan Suricata IPS, lalu mengecek rule dengan EICAR safe test.',
   },
   {
     id: 'p-2',
     title: 'Slow HTTP DDoS Defense Lab',
     label: 'Defensive Security',
-    problem: 'Web service Flask menjadi tidak stabil saat menerima simulasi koneksi Slow HTTP di lingkungan lab.',
-    contribution: 'Memonitor resource, beralih ke Gunicorn, menonaktifkan debug, dan menambahkan restart policy Docker.',
+    problem: 'Saat diuji dengan simulasi Slow HTTP di lab, web service Flask mulai tidak stabil dan sempat menghasilkan error.',
+    contribution: 'Saya memantau resource, mengganti server ke Gunicorn, mematikan debug, dan menambahkan restart policy Docker.',
   },
   {
     id: 'p-5',
     title: 'Ubuntu & Docker Web Deployment',
     label: 'System Administration',
-    problem: 'Menyiapkan rilis website tim agar konsisten, mudah dijalankan, dan dapat diverifikasi setelah deployment.',
-    contribution: 'Menyiapkan Ubuntu Server, container Docker, serta validasi operasional pada empat area layanan.',
+    problem: 'Website tim perlu dipindahkan ke server dengan proses rilis yang mudah diulang dan dicek setelah deployment.',
+    contribution: 'Saya menyiapkan Ubuntu Server, container Docker, lalu mengecek empat area layanan setelah website dijalankan.',
   },
 ]
 
@@ -53,7 +53,7 @@ function ProjectLinks({ project, compact = false }) {
         to={`/projects#project-${project.id}`}
         className="group focus-ring inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-semibold text-cyan-100 transition hover:text-cyan-200"
       >
-        View Project
+        Lihat Cerita Proyek
         <FaArrowRight className="transition-transform group-hover:translate-x-1" size={12} aria-hidden="true" />
       </Link>
       {hasSafeExternalUrl(project.repositoryUrl) ? (
@@ -96,9 +96,9 @@ export default function FeaturedProjectSection() {
       <div className="container-shell">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <SectionHeading
-            eyebrow="Selected work"
-            title="Dibangun, diuji, lalu didokumentasikan."
-            description="Tiga project yang paling mewakili cara saya bekerja: memahami masalah, mengerjakan bagian teknis, dan mencatat hasilnya dengan jelas."
+            eyebrow="Proyek pilihan"
+            title="Tiga proyek yang paling banyak mengajarkan saya."
+            description="Di sini saya ceritakan masalahnya, bagian yang saya kerjakan, dan hal yang saya pelajari selama prosesnya."
             headingId="featured-project-heading"
           />
           <Link
@@ -128,7 +128,7 @@ export default function FeaturedProjectSection() {
               </div>
               <span className="project-media-overlay" aria-hidden="true" />
               <span className="absolute left-6 top-6 z-10 rounded-full border border-white/10 bg-[#080c12]/90 px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-cyan-200 backdrop-blur sm:left-7 sm:top-7">
-                Featured / 01
+                Pilihan / 01
               </span>
             </div>
 
@@ -140,11 +140,11 @@ export default function FeaturedProjectSection() {
 
               <div className="mt-7 grid gap-5 border-y border-white/[0.07] py-6 sm:grid-cols-2">
                 <div>
-                  <p className="technical-label">Problem</p>
+                  <p className="technical-label">Yang ingin diselesaikan</p>
                   <p className="mt-2 text-sm leading-6 text-slate-400">{leadProject.problem}</p>
                 </div>
                 <div>
-                  <p className="technical-label">My contribution</p>
+                  <p className="technical-label">Bagian yang saya kerjakan</p>
                   <p className="mt-2 text-sm leading-6 text-slate-300">{leadProject.contribution}</p>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function FeaturedProjectSection() {
                 <h3 className="mt-3 text-xl font-semibold tracking-[-0.025em] text-slate-100">{project.title}</h3>
                 <p className="mt-4 text-sm leading-6 text-slate-400">{project.problem}</p>
                 <div className="mt-5 border-l border-cyan-300/35 pl-4">
-                  <p className="technical-label">My contribution</p>
+                  <p className="technical-label">Bagian yang saya kerjakan</p>
                   <p className="mt-2 text-sm leading-6 text-slate-300">{project.contribution}</p>
                 </div>
                 <div className="mt-6"><TechList project={project} limit={3} /></div>

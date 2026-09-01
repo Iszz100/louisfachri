@@ -12,9 +12,9 @@ export default function EducationSection() {
     <section className="section-padding pt-0" aria-labelledby="education-heading">
       <div className="container-shell">
         <SectionHeading
-          eyebrow="Education"
-          title="Pendidikan"
-          description="Pendidikan formal yang mendukung fokus belajar saya di bidang sistem, jaringan, dan cybersecurity."
+          eyebrow="Pendidikan"
+          title="Tempat saya belajar dasar-dasarnya."
+          description="Saya menempuh jurusan SIJA, tempat saya mulai mengenal sistem, jaringan, aplikasi, dan cara semuanya saling terhubung."
           headingId="education-heading"
         />
 

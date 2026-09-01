@@ -18,8 +18,8 @@ export default function ManifestoSection() {
           className="glass-panel rounded-2xl p-6 md:p-10"
         >
           <SectionHeading
-            eyebrow="Manifesto Pribadi"
-            title="Saya belajar lewat praktik langsung, bukan hanya teori."
+            eyebrow="Cara saya belajar"
+            title="Kalau penasaran, saya biasanya langsung bikin lab kecil."
           />
           <p className="max-w-4xl text-[clamp(1.05rem,1.6vw,1.4rem)] leading-relaxed text-slate-200">
             {profile.manifesto}

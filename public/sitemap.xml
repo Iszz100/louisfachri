@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luisfahrikah.my.id/</loc>
-    <image:image><image:loc>https://luisfahrikah.my.id/images/louis-fachri-putra-jatmiko.webp</image:loc></image:image>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,9 +14,5 @@
     <loc>https://luisfahrikah.my.id/sertifikasi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://luisfahrikah.my.id/profil/</loc>
-    <image:image><image:loc>https://luisfahrikah.my.id/images/louis-fachri-putra-jatmiko.webp</image:loc></image:image>
   </url>
 </urlset>

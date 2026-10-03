@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
 import { FaArrowRight, FaDownload, FaEnvelope } from 'react-icons/fa6'
 import cvFile from '../assets/CV Louis Fachri Putra Jatmiko.pdf'
-import { portraitPath as profilePhoto } from '../data/identity'
+import profilePhoto from '../assets/foto_profil.webp'
 import profilePhoto360 from '../assets/foto_profil_360.webp'
 import profilePhoto540 from '../assets/foto_profil_540.webp'
 import profilePhoto720 from '../assets/foto_profil_720.webp'
@@ -273,8 +273,8 @@ export default function HeroSection() {
                     loading="eager"
                     fetchPriority="high"
                     decoding="sync"
-                    width="1100"
-                    height="1650"
+                    width="585"
+                    height="708"
                     className="aspect-[4/5] w-full object-cover object-[50%_18%]"
                   />
                   <span className="portrait-reticle absolute inset-3 z-[2] rounded-xl" aria-hidden="true" />

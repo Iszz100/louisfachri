@@ -36,7 +36,7 @@ export default function PageMeta({
   title,
   description,
   canonicalPath,
-  robots = 'index, follow, max-image-preview:large',
+  robots = 'index, follow',
   type = 'website',
   structuredData,
 }) {

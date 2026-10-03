@@ -1,11 +1,10 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { SITE_URL } from '../src/config/site.js'
-import { personSchema } from '../src/data/identity.js'
 
 const outputDirectory = resolve('dist')
 const indexPath = resolve(outputDirectory, 'index.html')
-const baseHtml = (await readFile(indexPath, 'utf8')).replace(/<script id="portfolio-structured-data" type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
+const baseHtml = await readFile(indexPath, 'utf8')
 
 const pages = [
   {
@@ -99,8 +98,3 @@ await mkdir(outputDirectory, { recursive: true })
 await Promise.all(
   pages.map((page) => writeFile(resolve(outputDirectory, page.output), createPageHtml(page), 'utf8')),
 )
-
-// Add homepage identity only after generating the other routes.
-const schemaJson = JSON.stringify(personSchema).replaceAll('<', '\\u003c')
-await writeFile(indexPath, baseHtml.replace('</head>', `<script id="portfolio-structured-data" type="application/ld+json">${schemaJson}</script></head>`))
-await import('./generate-profile.mjs')

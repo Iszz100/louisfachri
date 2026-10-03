@@ -21,7 +21,7 @@ describe('routing and page metadata', () => {
 
     expect(await screen.findByRole('heading', { level: 1, name: /Louis Fachri Putra Jatmiko/i })).toBeInTheDocument()
     await waitFor(() => expect(document.title).toBe('Louis Fachri — System Administrator & Cybersecurity Portfolio'))
-    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', 'https://iszz100.github.io/louisfachri/')
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', 'https://luisfahrikah.my.id/')
   })
 
   it('renders the certifications page on a direct route with unique metadata', async () => {
@@ -31,7 +31,7 @@ describe('routing and page metadata', () => {
     await waitFor(() => expect(document.title).toBe('Sertifikasi | Louis Fachri'))
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      'https://iszz100.github.io/louisfachri/sertifikasi',
+      'https://luisfahrikah.my.id/sertifikasi',
     )
   })
 
@@ -46,7 +46,7 @@ describe('routing and page metadata', () => {
     await waitFor(() => expect(document.title).toBe('Projects | Louis Fachri'))
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      'https://iszz100.github.io/louisfachri/projects',
+      'https://luisfahrikah.my.id/projects',
     )
   })
 

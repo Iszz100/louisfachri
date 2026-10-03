@@ -31,9 +31,13 @@ npm run build
 
 ## Production
 
+- Domain utama: https://luisfahrikah.my.id/ dengan hosting Netlify dan base path `/`.
+- Canonical, metadata sosial, dan sitemap menggunakan domain utama tersebut.
+- Workflow GitHub Pages hanya dapat dijalankan manual; push tidak lagi memicu deployment GitHub Pages.
+
 - Metadata SEO dikelola per route melalui `PageMeta`; proses build juga menghasilkan HTML statis untuk `/projects`, `/sertifikasi`, dan halaman 404.
 - Header keamanan dan cache policy dikonfigurasi di `netlify.toml`.
 - Direct refresh `/projects` dan `/sertifikasi` dikonfigurasi di `public/_redirects`; URL lain yang tidak dikenal memakai `404.html`.
 - Sitemap dan robots tersedia di folder `public`.
 
-Perubahan tidak otomatis di-deploy. Push dan deployment dilakukan secara terpisah setelah verifikasi lokal.
+Perubahan lokal belum dipublikasikan. Deployment Netlify mengikuti pengaturan integrasi repository di dashboard Netlify.

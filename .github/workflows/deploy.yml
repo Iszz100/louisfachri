@@ -1,10 +1,9 @@
 name: Deploy to GitHub Pages
 
+# Production uses Netlify at https://luisfahrikah.my.id/.
+# Keep this legacy deployment available only for manual runs.
 on:
-  push:
-    branches:
-      - main
-      - master
+  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

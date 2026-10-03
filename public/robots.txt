@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://iszz100.github.io/louisfachri/sitemap.xml
+Sitemap: https://luisfahrikah.my.id/sitemap.xml

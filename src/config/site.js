@@ -1,2 +1,2 @@
-export const SITE_URL = 'https://iszz100.github.io/louisfachri'
+export const SITE_URL = 'https://luisfahrikah.my.id'
 export const SOCIAL_IMAGE = `${SITE_URL}/social-preview.png`

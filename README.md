@@ -41,3 +41,13 @@ npm run build
 - Sitemap dan robots tersedia di folder `public`.
 
 Perubahan lokal belum dipublikasikan. Deployment Netlify mengikuti pengaturan integrasi repository di dashboard Netlify.
+
+## Profil dan penemuan di mesin pencari
+
+- `/profil/` adalah halaman HTML statis berisi bio, foto, prestasi, dan publikasi; dibuat saat build melalui `scripts/generate-profile.mjs`. Gunakan `npm run build` dan `npm run preview` untuk memeriksanya.
+- Data identitas bersama berada di `src/data/identity.js`; profil sosial berada di `src/data/profile.js`.
+- Foto profil memiliki URL stabil `/images/louis-fachri-putra-jatmiko.webp` dan masuk image sitemap.
+- JSON-LD Person tersedia di HTML awal beranda. Halaman profil menggunakan ProfilePage dengan identitas Person yang sama.
+- Sesudah deploy, submit `https://luisfahrikah.my.id/sitemap.xml` di Google Search Console, lalu inspeksi `/` dan `/profil/` serta minta pengindeksan.
+- Tautkan domain utama dari profil LinkedIn dan Instagram. Kemunculan di Google, Google Images, dan rangkuman AI tidak dijamin oleh markup.
+- Label publikasi Instagram/LinkedIn masih netral sampai isi unggahan dikonfirmasi; tautan LinkedIn duplikat hanya dicantumkan sekali.

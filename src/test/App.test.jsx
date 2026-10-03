@@ -20,7 +20,7 @@ describe('routing and page metadata', () => {
     renderApp()
 
     expect(await screen.findByRole('heading', { level: 1, name: /Louis Fachri Putra Jatmiko/i })).toBeInTheDocument()
-    await waitFor(() => expect(document.title).toBe('Louis Fachri — System Administrator & Cybersecurity Portfolio'))
+    await waitFor(() => expect(document.title).toBe('Louis Fachri Putra Jatmiko — System Administrator & Cybersecurity Portfolio'))
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', 'https://luisfahrikah.my.id/')
   })
 

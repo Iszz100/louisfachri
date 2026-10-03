@@ -2,3 +2,5 @@
 /projects/    /projects.html     200
 /sertifikasi  /sertifikasi.html  200
 /sertifikasi/ /sertifikasi.html  200
+
+/profil /profil/ 301

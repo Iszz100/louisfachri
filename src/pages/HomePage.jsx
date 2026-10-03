@@ -1,5 +1,5 @@
 import PageMeta from '../components/common/PageMeta'
-import { SITE_URL } from '../config/site'
+import { biography, achievement, personSchema } from '../data/identity'
 import CapabilitiesSection from '../sections/CapabilitiesSection'
 import CertificationsPreviewSection from '../sections/CertificationsPreviewSection'
 import ClosingSection from '../sections/ClosingSection'
@@ -16,22 +16,10 @@ const homepageSections = [
   { id: 'contact', content: <ClosingSection />, className: 'content-auto-section min-h-[520px]' },
 ]
 
-const title = 'Louis Fachri — System Administrator & Cybersecurity Portfolio'
+const title = 'Louis Fachri Putra Jatmiko — System Administrator & Cybersecurity Portfolio'
 const description =
-  'Portfolio Louis Fachri, Junior System Administrator dan Cybersecurity Enthusiast dengan project Linux, Docker, networking, Wazuh, OPNsense, serta IDS/IPS.'
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Louis Fachri Putra Jatmiko',
-  url: `${SITE_URL}/`,
-  jobTitle: 'Junior System Administrator and Cybersecurity Enthusiast',
-  knowsAbout: ['System Administration', 'Cybersecurity', 'Wazuh', 'OPNsense', 'Linux', 'Docker', 'Networking'],
-  sameAs: [
-    'https://github.com/Iszz100',
-    'https://www.linkedin.com/in/louis-fachri-putra-jatmiko-878889291/',
-    'https://www.instagram.com/luisfahrikah/',
-  ],
-}
+  'Portfolio resmi Louis Fachri Putra Jatmiko (Louis Fachri), Junior System Administrator dan Cybersecurity Enthusiast dengan project Linux, Docker, networking, Wazuh, OPNsense, serta IDS/IPS.'
+
 
 export default function HomePage() {
   const { hash } = useLocation()
@@ -50,9 +38,15 @@ export default function HomePage() {
 
   return (
     <>
-      <PageMeta title={title} description={description} canonicalPath="/" structuredData={structuredData} />
+      <PageMeta title={title} description={description} canonicalPath="/" structuredData={personSchema} />
       <main id="main-content" tabIndex="-1">
         <HeroSection />
+        <section aria-labelledby="profile-summary-heading" className="container-shell py-16">
+          <h2 id="profile-summary-heading" className="text-2xl font-semibold text-slate-100">Tentang Louis Fachri Putra Jatmiko</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-slate-300">{biography}</p>
+          <p className="mt-3 max-w-3xl leading-8 text-slate-300">{achievement.description}</p>
+          <a href="/profil/" className="focus-ring mt-5 inline-flex min-h-11 items-center text-cyan-300 underline underline-offset-4">Profil lengkap, prestasi, dan publikasi</a>
+        </section>
         {homepageSections.map(({ id, content, className }) => (
           <div key={id} id={id} className={className}>
             {content}

@@ -18,7 +18,7 @@ export const profile = {
   },
   links: {
     github: 'https://github.com/Iszz100',
-    linkedin: 'https://www.linkedin.com/in/louis-fachri-putra-jatmiko-878889291/',
+    linkedin: 'https://www.linkedin.com/in/louis-fachri-putra-jatmiko/',
     instagram: 'https://www.instagram.com/luisfahrikah/',
     email: 'mailto:louisfpj@gmail.com',
   },
